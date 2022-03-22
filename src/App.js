@@ -1,7 +1,8 @@
 import {
   BrowserRouter as Router,
   Route,
-  Routes
+  Routes,
+  Navigate
 } from 'react-router-dom'
 import './App.css';
 import Navbar from './components/layout/Navbar'
@@ -34,7 +35,7 @@ function App() {
   }
    return (
     <Router>
-      <Navbar handleLogout={handleLogout}/>
+      <Navbar handleLogout={handleLogout} currentUser={currentUser}/>
 
       <div className="App">
         <Routes>
@@ -47,15 +48,21 @@ function App() {
             path="/login"
             element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
           />
-
+         {/* 
           <Route 
             path="/profile"
             element={<Profile />}
+          /> 
+          */}
+          
+          <Route 
+            path="/profile"
+            element={currentUser ? <Profile  currentUser={currentUser} /> : <Navigate to="/login" />}
           />
 
           <Route 
             path="/register"
-            element={<Register />}
+            element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
           />
 
         </Routes>
