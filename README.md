@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+Roman
+Mark
+Andy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# P3 Concept
+- We would like to create a discord/slack 'jr' clone utilizing socket.io
+- Users can create an account and start chatting in the main 'timeline' or opt to create a new room for more private/focused chatting.
 
-## Available Scripts
+# Technologies Used
+- javascript
+- socket.io
+- react.js
+- express
+- mongodb
+- mongoose
+- Material UI
 
-In the project directory, you can run:
+# User Stories
+- as a user i want to create an account to start chatting
+- as a user i want to have different chat rooms to contribute to or read from
+- as a user i want to login in and log out of my account
+- as a user i want to be able to delete my account
+- as a user i want to have a feed / home that shows different posts.
+- as a user i want to have a profile where i could edit my name, profile picture, and the about me section
+- as a user i want to see a name, thumbnail of profile picture, and timestamp for each post
 
-### `npm start`
+# MVP goals
+- chat app usable by many users at once
+- A user can make a new room 
+- access to different 'rooms'
+- edit user profile
+- delete user profile 
+- see other profiles 
+- live messages 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Stretch Goals
+- ability to post something other than text (images, sound, etc)
+- differentiate between private/public rooms - auth lock'd rooms
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Routes
+| Method | Path                        | Purpose                                           |
+|--------|-----------------------------|---------------------------------------------------|
+| GET    | `/`                         | landing / home                                    |
+| GET    | `/signup`                   | sign up / registration page                       |
+| POST   | `/signup`                   | create new user in db                             |
+| GET    | `/login`                    | login page                                        |
+| GET    | `/profile`                  | display user profile page                         |
+| GET    | `/profile/:id`              | displays specific users profile                   |
+| PUT    | `/profile/:id`              | update personal user profile                      |
+| DELETE | `/profile/:id`              | delete personal profile                           |
+| GET    | `/timeline`                 | view main 'timeline' chatroom                     |
+| POST   | `/timeline`                 | add a chat to the timeline                        |
+| DELETE | `/timeline/:messageId`      | remove your own message from the timeline         |
+| GET    | `/rooms`                    | view all chatrooms you are subscribed to          |
+| POST   | `/rooms`                    | create a new chatroom                             |
+| GET    | `/rooms/:roomId`            | view specific chatroom                            |
+| DELETE | `/rooms/:roomId`            | delete a specific chatroom                        |
+| PUT    | `/rooms/:roomId`            | update details about a specific chatroom          |
+| POST   | `/rooms/:roomId`            | add message to specific chat room                 |
+| DELETE | `/rooms/:roomId/:messageId` | delete a specific message from a specific room    |
+| PUT    | `/rooms/:roomId/:messageId` | edit an already-posted message in a specific room |
