@@ -25,7 +25,7 @@ Andy
 - as a user i want to see a name, thumbnail of profile picture, and timestamp for each post
 
 # ERDs 
-![ERD](./public/erds.png)
+![ERD](./public/newerd.png)
 
 # Wireframes
 ![Wireframes](./public/wireframes.png)
