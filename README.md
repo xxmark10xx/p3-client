@@ -24,6 +24,12 @@ Andy
 - as a user i want to have a profile where i could edit my name, profile picture, and the about me section
 - as a user i want to see a name, thumbnail of profile picture, and timestamp for each post
 
+# ERDs 
+![ERD](./public/erds.png)
+
+# Wireframes
+![Wireframes](./public/wireframes.png)
+
 # MVP goals
 - chat app usable by many users at once
 - A user can make a new room 
