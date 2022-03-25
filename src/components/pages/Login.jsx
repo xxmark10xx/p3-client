@@ -31,6 +31,7 @@ export default function Login({ currentUser, setCurrentUser }) {
       console.log(err)
     }
   }
+// hello world
 
   // navigate to the user's profile if currentUser is not null
   if (currentUser) return <Navigate to="/profile" />

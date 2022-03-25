@@ -11,6 +11,7 @@ export default function Navbar({ handleLogout, currentUser }) {
       </Link>
 
       <Link to="/profile">Profile</Link>
+      <Link to="/timeline">Timeline</Link>
     </>
   )
 
