@@ -5,13 +5,13 @@ export default function Navbar({ handleLogout, currentUser }) {
   const loggedIn = (
     <>
       {/* if the user is loggerd in..... */}
-      <Link to="/">
+
+      <Link className='links right-side-links' to="/profile">Profile</Link>
+      <Link className='links right-side-links' to="/timeline">Timeline</Link>
+      <Link className='links right-side-links' to="/">
         {/* todo: app function to logout */}
         <span onClick={handleLogout}>log out</span>
       </Link>
-
-      <Link to="/profile">Profile</Link>
-      <Link to="/timeline">Timeline</Link>
     </>
   )
 
@@ -19,17 +19,22 @@ export default function Navbar({ handleLogout, currentUser }) {
   const loggedOut = (
     <>
       {/* if the user in logged out..... */}
-      <Link to="/register">register</Link>
+      <Link className='links right-side-links' to="/register">register</Link>
 
-      <Link to="/login">login</Link>
+      <Link className='links right-side-links' to="/login">login</Link>
     </>
   )
 
   return (
     <nav>
-      <Link to="/">User App</Link>
-
-      {currentUser ? loggedIn : loggedOut}
+      <div className='nav-wrapper'>
+        <div className='home-link-wrapper'>
+            <Link className='links' to="/">Home</Link>
+        </div>
+        <div className='right-side-wrapper'>
+          {currentUser ? loggedIn : loggedOut}
+        </div>
+      </div>
     </nav>
   )
 }

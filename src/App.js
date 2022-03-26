@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import './App.css';
 import Navbar from './components/layout/Navbar';
 import Login from './components/pages/Login';
-import Welcome from './components/pages/Welcome';
+import Welcome from './components/pages/Home';
 import Register from './components/pages/Register';
 import Profile from './components/pages/Profile';
 import { useState, useEffect } from 'react';
