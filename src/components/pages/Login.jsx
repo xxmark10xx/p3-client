@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 export default function Login({ currentUser, setCurrentUser }) {
   const [form, setForm] = useState({
@@ -9,6 +9,8 @@ export default function Login({ currentUser, setCurrentUser }) {
     password: ''
   })
   const [msg, setMessage] = useState('')
+
+  let navigate = useNavigate()
 
   const handleFormSubmit = async  e => {
     e.preventDefault()
@@ -22,19 +24,23 @@ export default function Login({ currentUser, setCurrentUser }) {
       localStorage.setItem('jwt', token)
       // set the app state to the logged in user
       setCurrentUser(decoded)
+      // console.log(currentUser)
+      
+      navigate('/timeline', {replace: true})
+  
     } catch (err) {
       // handle errors suchs as wrong credentials 
       if (err.response.status === 400) {
-        console.log(err.response.data)
-        setMessage(err.response.data.msg)
+          console.log(err.response.data)
+          setMessage(err.response.data.msg)
+        }
+        console.log(err)
       }
-      console.log(err)
     }
-  }
-// hello world
-
-  // navigate to the user's profile if currentUser is not null
-  if (currentUser) return <Navigate to="/timeline" />
+    // hello world
+    console.log(currentUser)
+    // navigate to the user's profile if currentUser is not null
+    // if (currentUser) return <Navigate to="/timeline" />
   
   return (
     <div className='login-form-wrapper'>

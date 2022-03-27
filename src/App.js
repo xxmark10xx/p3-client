@@ -8,6 +8,7 @@ import Profile from './components/pages/Profile';
 import { useState, useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import Timeline from './components/pages/Timeline';
+import Home from './components/pages/Home';
 
 function App() {
 	// state wi the user data when the user is logged in
@@ -35,7 +36,7 @@ function App() {
 
 			<div className="App">
 				<Routes>
-					<Route path="/" element={<Welcome />} />
+					<Route path="/" element={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
 
 					<Route
 						path="/login"
