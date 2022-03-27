@@ -65,13 +65,6 @@ nav {
   padding-right: 20px;
 }
 
-/* Welcome component */
-.welcome-component {
-  height: 40%;
-  width: 30vw;
-  /* background-color: #61dafb; */
-}
-
 /* Signup Login component */
 .signuplogin-component {
   height: 60%;
@@ -131,6 +124,14 @@ nav {
 .people-online {
   font-size: 12px;
   text-transform: uppercase;
+}
+
+.show-message-wrapper {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 /* input */
@@ -213,6 +214,8 @@ nav {
 
 /* Welcome Component */
 .welcome-component {
+  height: 40%;
+  width: 30vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -353,6 +356,37 @@ input[type="password"] {
 /* Register Component */
 .register-form-wrapper {
   padding-top: 30px;
+}
+
+/* Timeline Component */
+/* .timeline-wrapper-rightside {
+
+} */
+
+/* Aside Component */
+.aside-component {
+  height: 100%;
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aside-component-content {
+  padding: 25px;
+}
+
+.aside-component-wrapper {
+  height: 93%;
+  width: 85%;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 20px;
+}
+
+.aside-component-switches {
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: space-evenly;
 }
 
 @keyframes App-logo-spin {

@@ -19,7 +19,9 @@ export default function SignupLogin({ currentUser, setCurrentUser }) {
       {formState ? <Login setCurrentUser={setCurrentUser} currentUser={currentUser}/> : <Register setCurrentUser={setCurrentUser}/>}
     </div>  
 
-  const userSignedIn = <h5>User is signed in!</h5>
+  const userSignedIn = <div className='signuplogin-component-content'>
+    <h5>User is signed in!</h5>
+  </div> 
   return (
     <div className="signuplogin-component">
       <div className="signuplogin-component-wrapper">

@@ -1,8 +1,9 @@
 import { useState } from "react"
 import axios from "axios"
 import Message from "./Message"
+import FormChatBar from "./FormChatBar"
 
-export default function Mainchat() {
+export default function Mainchat({ currentUser }) {
 
   const [form, setForm] = useState('')
 
@@ -34,6 +35,8 @@ export default function Mainchat() {
     console.log(form)
   }
 
+  const showMessage = <div className="show-message-wrapper"><h4>Please log in or register to chat!</h4></div> 
+
   return (
     <div className="main-chat-wrapper">
       <div className="main-chat-inner-wrapper">
@@ -58,19 +61,8 @@ export default function Mainchat() {
             <Message />
             <Message />
           </div>
-          <form className="room-submit-form" onSubmit={handleSubmitTimeline}>
-              <label htmlFor="content"></label>
-              <input className="chat-form-content shadow"
-                type="text"
-                name="content"
-                  value={form.content}
-                  placeholder="What's on your mind?"
-                onChange={(e) => { setForm(e.target.value) }}
-                id="content"
-              />
-              <input className="chat-submit-btn shadow" type="submit" />
-            
-          </form>
+          {currentUser ? <FormChatBar handleSubmitTimeline={handleSubmitTimeline} setForm={setForm} form={form}/> : showMessage }
+          
         </div>
       </div>
     </div>

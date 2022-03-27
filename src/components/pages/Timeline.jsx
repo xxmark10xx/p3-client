@@ -3,7 +3,7 @@ import Aside from "../Aside";
 import Mainchat from "../Mainchat";
 
 
-export default function Timeline() {
+export default function Timeline({ currentUser }) {
 
   const [timelineMessages, setTimelineMessages] = useState(null)
 
@@ -12,13 +12,14 @@ export default function Timeline() {
 	});
 
   return (
-    <div>
-      <h2>HEllo timeline</h2>
+    <>
       <div className="timeline-wrapper">
         <Aside />
-        <Mainchat />
       </div>
-    </div>   
+      <div className="timeline-wrapper-rightside">
+        <Mainchat currentUser={currentUser}/>
+      </div>
+    </>   
   )
 }
 

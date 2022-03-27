@@ -10,7 +10,7 @@ export default function Home({ currentUser, setCurrentUser }) {
       <SignupLogin currentUser={currentUser} setCurrentUser={setCurrentUser} />
     </div>
     <div className="home-wrapper-rightside">
-      <Mainchat />
+        <Mainchat currentUser={currentUser}/>
     </div>
     </>
   )

@@ -59,7 +59,7 @@ function App() {
 						element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
 					/>
 
-					<Route path="/timeline" element={<Timeline />} />
+					<Route path="/timeline" element={<Timeline currentUser={currentUser} />} />
 				</Routes>
 			</div>
 		</Router>
