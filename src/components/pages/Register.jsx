@@ -44,48 +44,55 @@ export default function Register({ currentUser, setCurrentUser }) {
   if (currentUser) return <Navigate to="/profile" />
 
   return (
-    <div>
-      <h3>Become a User @ User App!</h3>
-
+    <div className='register-form-wrapper'>
       <p>{msg}</p>
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email:</label>
-        <input 
-          type="email"
-          id="email"
-          value={form.email}
-          onChange={e => setForm({ ...form, email: e.target.value })}
-          placeholder='enter your email...'
-        />
-        <label htmlFor="name">Name:</label>
-        <input 
-          type="text"
-          id="name"
-          value={form.name}
-          onChange={e => setForm({ ...form, name: e.target.value })}
-          placeholder='enter your name...'
-        />
+        <div className='login-form-email'>
+          <label className='label' htmlFor="email">Email:</label>
+          <input 
+            type="email"
+            id="email"
+            value={form.email}
+            onChange={e => setForm({ ...form, email: e.target.value })}
+            placeholder='enter your email...'
+          />
+        </div>
+        <div className='login-form-email'>
+          <label className='label' htmlFor="name">Name:</label>
+          <input 
+            className='enter-your-name'
+            type="text"
+            id="name"
+            value={form.name}
+            onChange={e => setForm({ ...form, name: e.target.value })}
+            placeholder='enter your name...'
+          />
+        </div>
 
-        <label htmlFor="password">Password:</label>
-        <input 
-          type="password"
-          id="password"
-          value={form.password}
-          onChange={e => setForm({ ...form, password: e.target.value })}
-          placeholder='enter your password...'
-        />
+        <div className='login-form-email'>
+          <label className='label' htmlFor="password">Password:</label>
+          <input 
+            type="password"
+            id="password"
+            value={form.password}
+            onChange={e => setForm({ ...form, password: e.target.value })}
+            placeholder='enter your password...'
+          />
+        </div>
 
-        <label htmlFor="passwordConfirmation">Confirmation:</label>
-        <input 
-          type="password"
-          id="passwordConfirmation"
-          value={form.passwordConfirmation}
-          onChange={e => setForm({ ...form, passwordConfirmation: e.target.value })}
-          placeholder='enter your confirmation...'
-        />
+        <div className='login-form-email'> 
+          <label className='label' htmlFor="passwordConfirmation">Confirmation:</label>
+          <input 
+            type="password"
+            id="passwordConfirmation"
+            value={form.passwordConfirmation}
+            onChange={e => setForm({ ...form, passwordConfirmation: e.target.value })}
+            placeholder='enter your confirmation...'
+          />
+        </div>
 
-        <input type="submit" />
+        <input className='register-btn' type="submit" />
       </form>
     </div>
   )

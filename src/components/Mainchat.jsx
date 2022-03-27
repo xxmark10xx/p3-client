@@ -38,6 +38,10 @@ export default function Mainchat() {
     <div className="main-chat-wrapper">
       <div className="main-chat-inner-wrapper">
         <div className="form-post">
+          <div className="people-online-wrapper">
+            <div className="dot-online"></div>
+            <h4 className="people-online">42 People online</h4>
+          </div>
           <div className="convo">
             <Message />
             <Message own={true}/>

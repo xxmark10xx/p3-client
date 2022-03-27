@@ -34,31 +34,34 @@ export default function Login({ currentUser, setCurrentUser }) {
 // hello world
 
   // navigate to the user's profile if currentUser is not null
-  if (currentUser) return <Navigate to="/profile" />
+  if (currentUser) return <Navigate to="/timeline" />
   
   return (
-    <div>
-      <h3>Login form:</h3>
+    <div className='login-form-wrapper'>
       <p>{msg ? `the server has a message for you: ${msg}` : ''}</p>
       <form onSubmit={handleFormSubmit}>
-        <label htmlFor="email">Email:</label>
-        <input 
-          id="email"
-          placeholder='user@domain.com'
-          type="email"
-          onChange={e => setForm({...form, email: e.target.value})}
-          value={form.email}
-        />
+        <div className='login-form-email'>
+          <label className='label' htmlFor="email">Email:</label>
+          <input 
+            id="email"
+            placeholder='user@domain.com'
+            type="email"
+            onChange={e => setForm({...form, email: e.target.value})}
+            value={form.email}
+          />
+        </div>
 
-        <label htmlFor="password">Password:</label>
-        <input 
-          id="password"
-          type="password"
-          onChange={e => setForm({...form, password: e.target.value})}
-          value={form.password}
-        />
+        <div className='login-form-password'>
+          <label className='label' htmlFor="password">Password:</label>
+          <input 
+            id="password"
+            type="password"
+            onChange={e => setForm({...form, password: e.target.value})}
+            value={form.password}
+          />
+        </div>
 
-        <input type="submit" />
+        <input className='submit-btn' type="submit" />
       </form>
     </div>
   )

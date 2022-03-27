@@ -69,14 +69,14 @@ nav {
 .welcome-component {
   height: 40%;
   width: 30vw;
-  background-color: #61dafb;
+  /* background-color: #61dafb; */
 }
 
 /* Signup Login component */
 .signuplogin-component {
   height: 60%;
   width: 30vw;
-  background-color: cadetblue;
+  /* background-color: cadetblue; */
 }
 
 /* Main chat Component */
@@ -91,10 +91,10 @@ nav {
 }
 
 .main-chat-inner-wrapper {
-  height: 85%;
+  height: 87.5%;
   width: 85%;
   padding: 30px;
-  background-color: #edf0f5;
+  background-color: #edf0f5a4;
   border-radius: 20px;
   /* position: relative; */
 }
@@ -112,6 +112,25 @@ nav {
   /* bottom: 10%; */
   /* flex-direction: row; */
   width: 100%;
+}
+
+.people-online-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dot-online {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(152, 245, 12);
+  margin-right: 10px;
+}
+
+.people-online {
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
 /* input */
@@ -140,7 +159,7 @@ nav {
   height: 85%;
   width: 100%;
   overflow-y: scroll;
-  background-color: #edf0f5;
+  /* background-color: #edf0f58f; */
   z-index: 10;
   /* border-radius: 20px; */
   border-top: 1px solid rgba(0, 0, 0, 0.10);
@@ -160,12 +179,18 @@ nav {
 .message-top {
   display: flex;
   align-items: center;
+  /* padding-right: 10px; */
+}
+
+.message-bottom {
+  font-size: 12px;
+  margin-top: 5px;
 }
 
 .message-img {
   width: 43px;
   height: 43px;
-  border-radius: 50%;
+  border-radius: 10%;
   object-fit: cover;
   margin-right: 10px;
 }
@@ -179,15 +204,156 @@ nav {
 
 .message.own {
   align-items: flex-end;
+  padding-right: 10px;
 }
 
 .message.own .message-text {
-  background-color: #61dafb;
+  background-color: #d0d3e3;
 }
 
-/* input[type=submit] {
-  width: 100px
-} */
+/* Welcome Component */
+.welcome-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-component-wrapper {
+  height: 85%;
+  width: 85%;
+  /* background-color: rgba(95, 158, 160, 0.397); */
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 20px;
+}
+
+.welcome-component-content {
+  /* height: 100%;
+  width: 100%; */
+  padding: 25px;
+}
+
+.welcome-paragraph {
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.close-icon {
+  cursor: pointer;
+}
+
+.welcome-component-top-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+/* Signup/Login Component */
+.signuplogin-component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 10px; */
+}
+
+.signuplogin-component-wrapper {
+  height: 88.5%;
+  width: 85%;
+  /* background-color: rgba(95, 158, 160, 0.397); */
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 20px;
+}
+
+.signuplogin-component-content {
+  padding: 25px 20px;
+}
+
+.signuplogin-component-switches {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.login {
+  /* padding-right: 90px; */
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.signup {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.active {
+  padding: 10px 20px;
+  background-color: #edf0f5a4;
+  border-radius: 10px;
+}
+
+/* Login Component */
+.login-form-wrapper {
+  padding-top: 30px;
+}
+
+.login-form-email:not(:last-child) {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.login-form-password {
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="email"] {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.15);
+}
+
+input[type="password"] {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.15);
+}
+
+.enter-your-name {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn {
+  margin-top: 30px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.register-btn {
+  margin-top: 9px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.label {
+  margin-bottom: 5px;
+}
+
+/* Register Component */
+.register-form-wrapper {
+  padding-top: 30px;
+}
 
 @keyframes App-logo-spin {
   from {
