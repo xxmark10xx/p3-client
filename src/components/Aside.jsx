@@ -1,4 +1,6 @@
 import { useState } from "react"
+import ChatDetails from "./ChatDetails"
+import Profile from "./Profile"
 
 export default function Aside() {
 
@@ -11,12 +13,15 @@ export default function Aside() {
   return (
     <div className="aside-component">
       <div className="aside-component-wrapper">
-        <div className="aside-component-content">
           <div className="aside-component-switches">
             <h5 onClick={handleState} className={formState ? "login active" : 'login'}>Chat Details</h5>
             <h5 onClick={handleState} className={formState ? 'signup' : "signup active"}>Your Profile</h5>
-          </div>
-          
+        </div>
+        <div className="aside-title-wrapper">
+          <h2>users</h2>
+        </div>
+        <div className="aside-component-content">
+          {formState ? <ChatDetails /> : <Profile />}
         </div>
       </div>
     </div>
