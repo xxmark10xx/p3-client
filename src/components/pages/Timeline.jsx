@@ -3,7 +3,7 @@ import Aside from "../Aside";
 import Mainchat from "../Mainchat";
 
 
-export default function Timeline({ currentUser }) {
+export default function Timeline({ currentUser, handleLogout }) {
 
   const [timelineMessages, setTimelineMessages] = useState(null)
 
@@ -14,7 +14,7 @@ export default function Timeline({ currentUser }) {
   return (
     <>
       <div className="timeline-wrapper">
-        <Aside currentUser={currentUser}/>
+        <Aside currentUser={currentUser} handleLogout={handleLogout}/>
       </div>
       <div className="timeline-wrapper-rightside">
         <Mainchat currentUser={currentUser}/>

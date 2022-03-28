@@ -40,3 +40,5 @@ export default function Profile({ currentUser }) {
     </div>
   )
 }
+
+// this page is no longer needed
