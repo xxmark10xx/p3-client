@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 export default function Register({ currentUser, setCurrentUser }) {
   const [form, setForm] = useState({
@@ -11,6 +11,8 @@ export default function Register({ currentUser, setCurrentUser }) {
     passwordConfirmation: ''
   })
   const [msg, setMsg] = useState('')
+
+  let navigate = useNavigate()
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -28,6 +30,7 @@ export default function Register({ currentUser, setCurrentUser }) {
         const decoded = jwt_decode(token)
         // log the user in 
         setCurrentUser(decoded)
+        navigate('/timeline', {replace: true})
       } else {
         setMsg('the two passwords you entered do not match 🥴')
       }

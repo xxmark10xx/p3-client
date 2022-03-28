@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import Message from "./Message"
 import FormChatBar from "./FormChatBar"
+import jwtDecode from "jwt-decode"
 
 export default function Mainchat({ currentUser }) {
 
@@ -33,7 +34,7 @@ export default function Mainchat({ currentUser }) {
     e.preventDefault()
 
     const token = localStorage.getItem('jwt')
-    console.log(token)
+    // console.log(jwtDecode.decode(token))
 
     const options = {
       headers: {
@@ -49,11 +50,13 @@ export default function Mainchat({ currentUser }) {
     console.log('form data', form)
   }
 
+  // console.log(currentUser.id)
+
   const showMessage = <div className="show-message-wrapper"><h4>Please log in or register to chat!</h4></div> 
 
 
   const mappedMsgs = msgs.map((message, i) => {
-    return <div ref={scrollRef} key={`message-${i}`}> <Message name={message.author.name} content={message.content} createdAt={message.createdAt} avatar={message.avatar} /></div>
+    return <div ref={scrollRef} key={`message-${i}`}> <Message name={message.author.name} content={message.content} createdAt={message.createdAt} avatar={message.avatar} userId={message.author._id} currentUser={currentUser} own={currentUser ? message.author._id === currentUser.id : false}/></div>
   })
 
   // React scroll to End of a div

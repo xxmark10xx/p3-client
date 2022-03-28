@@ -1,9 +1,11 @@
-export default function Message({ own, name, content, createdAt, avatar }) {
+import { format, render, cancel, register } from 'timeago.js';
+
+export default function Message({ own, name, content, createdAt, avatar, userId, currentUser }) {
  
  
   return (
     // <div className={own ? "message own" : "message"}>
-    <div className={"message"}>
+    <div className={own ? "message own" : "message"}>
       <div className="message-top">
         <div>
           <img
@@ -16,7 +18,7 @@ export default function Message({ own, name, content, createdAt, avatar }) {
         <p className="message-text">{content}</p>
       </div>
       <div className="message-bottom">@{name}</div>
-      <div className="message-bottom">{createdAt}</div>
+      <div className="message-bottom">{format(createdAt)}</div>
     </div>
   )
 }
