@@ -1,6 +1,9 @@
-export default function Message({ own }) {
+export default function Message({ own, name, content, createdAt, avatar }) {
+ 
+ 
   return (
-    <div className={own ? "message own" : "message"}>
+    // <div className={own ? "message own" : "message"}>
+    <div className={"message"}>
       <div className="message-top">
         <div>
           <img
@@ -10,10 +13,10 @@ export default function Message({ own }) {
           
 
         </div>
-        <p className="message-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p className="message-text">{content}</p>
       </div>
-      <div className="message-bottom">@roman</div>
-      <div className="message-bottom">1 hour ago</div>
+      <div className="message-bottom">@{name}</div>
+      <div className="message-bottom">{createdAt}</div>
     </div>
   )
 }
