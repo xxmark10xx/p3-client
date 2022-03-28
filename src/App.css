@@ -109,6 +109,7 @@ nav {
 
 .people-online-wrapper {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
@@ -131,6 +132,12 @@ nav {
   display: flex;
   justify-content: center;
   align-content: center;
+  align-items: center;
+}
+
+.people-online-wrapper-details {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
@@ -373,8 +380,10 @@ input[type="password"] {
 }
 
 .aside-component-content {
+  margin: 30px auto;
   height: 75%;
-  padding: 0px 25px 25px 25px;
+  width: 85%;
+  /* padding: 0px 25px 25px 25px; */
   overflow-y: scroll;
   border-top: 1px solid rgba(0, 0, 0, 0.10);
   border-bottom: 1px solid rgba(0, 0, 0, 0.10);
@@ -397,29 +406,51 @@ input[type="password"] {
 
 .aside-title-wrapper {
   margin-top: 20px;
-  padding: 0 25px 25px 25px;
+  padding: 0 25px 25px 0px;
 }
 
 /* Chatdetails Component */
 .chatdetails-main {
-  /* height: 50%; */
-  /* margin-top: 40px; */
   position: relative;
-  /* overflow-y: scroll; */
 }
 
-/* .users-wrapper {
-  position: relative;
-  height: 55%;
-  background-color: #61dafb;
-} */
+/* UserChatDetails Component */
+.user-chat-detail-name {
+  font-weight: 500;
+  font-size: 14px;
+}
 
-/* .users {
-  height: 55%;
-  width: 100%;
-  background-color: blueviolet;
-  overflow-y: scroll;
-} */
+/* Profile Component */
+.aside-profile-wrapper {
+  margin-top: 60px;
+  padding: 0 25px 25px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profile-img {
+  width: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.user-details-wrapper-profile {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-bio-wrapper {
+  margin-top: 20px;
+}
+
+.user-bio {
+  text-align: center;
+}
 
 @keyframes App-logo-spin {
   from {

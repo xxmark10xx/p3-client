@@ -6,8 +6,12 @@ export default function ChatDetails() {
 
   return (
     <>
+      <div className="aside-title-wrapper">
+        <h2>users</h2>  
+      </div>
       <div className="chatdetails-main"> 
         {/* <div className="users-wrapper"> */}
+        
           <div className="users">
               <UserChatDetails name={"Mark"}/>
               <UserChatDetails name={"Andy"}/>

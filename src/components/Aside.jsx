@@ -2,7 +2,7 @@ import { useState } from "react"
 import ChatDetails from "./ChatDetails"
 import Profile from "./Profile"
 
-export default function Aside() {
+export default function Aside({ currentUser }) {
 
   const [formState, setFormState] = useState(true)
 
@@ -17,11 +17,9 @@ export default function Aside() {
             <h5 onClick={handleState} className={formState ? "login active" : 'login'}>Chat Details</h5>
             <h5 onClick={handleState} className={formState ? 'signup' : "signup active"}>Your Profile</h5>
         </div>
-        <div className="aside-title-wrapper">
-          <h2>users</h2>
-        </div>
+        
         <div className="aside-component-content">
-          {formState ? <ChatDetails /> : <Profile />}
+          {formState ? <ChatDetails /> : <Profile currentUser={currentUser}/>}
         </div>
       </div>
     </div>

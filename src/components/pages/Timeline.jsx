@@ -14,7 +14,7 @@ export default function Timeline({ currentUser }) {
   return (
     <>
       <div className="timeline-wrapper">
-        <Aside />
+        <Aside currentUser={currentUser}/>
       </div>
       <div className="timeline-wrapper-rightside">
         <Mainchat currentUser={currentUser}/>

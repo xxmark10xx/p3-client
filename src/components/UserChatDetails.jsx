@@ -3,8 +3,8 @@ export default function UserChatDetails({ name }) {
     <>
       <div className="user-chat-detail-wrapper">
         {/* <img src="" alt="" /> */}
-        <div className="user-chat-detail-name">
-          <h4>{name}</h4>
+        <div className="user-chat-detail-name=wrapper">
+          <h4 className="user-chat-detail-name">{name}</h4>
         </div>
       </div>
     </>
