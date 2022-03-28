@@ -5,20 +5,31 @@ import FormChatBar from "./FormChatBar"
 
 export default function Mainchat({ currentUser }) {
 
-  const [form, setForm] = useState('')
+  const [form, setForm] = useState({
+    content: ''
+  })
 
   const handleSubmitTimeline = async (e) => {
     e.preventDefault()
 
 
     //********** theres a bug here **********
-    // try {
-    //   const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline/addmessage`, form)
-    //   console.log(response)
-    // } catch (error) {
+
+    const token = localStorage.getItem('jwt')
+    console.log(token)
+
+    const options = {
+      headers: {
+        'Authorization': token
+      }
+    }
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline/addmessage`, form, options)
+      console.log(response)
+    } catch (error) {
       
-    // }
-    console.log(form)
+    }
+    console.log('form data', form)
   }
 
   const showMessage = <div className="show-message-wrapper"><h4>Please log in or register to chat!</h4></div> 

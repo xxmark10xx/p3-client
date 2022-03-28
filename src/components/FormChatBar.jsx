@@ -8,7 +8,7 @@ export default function FormChatBar({ handleSubmitTimeline, setForm, form }) {
                 name="content"
                   value={form.content}
                   placeholder="What's on your mind?"
-                onChange={(e) => { setForm(e.target.value) }}
+                onChange={(e) => { setForm({content: e.target.value})}}
                 id="content"
               />
               <input className="chat-submit-btn shadow" type="submit" />
