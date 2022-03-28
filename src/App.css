@@ -484,11 +484,20 @@ input[type="password"] {
   border-radius: 10px;
   cursor: pointer;
   background-color: white;
-  
+
   box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.15);
   color: black;
   cursor: pointer;
 }
+
+/* .css-1w77di {
+  position: absolute;
+} */
+
+/* .basicspeed-nav {
+  position: fixed;
+  top: 10%;
+} */
 
 @keyframes App-logo-spin {
   from {

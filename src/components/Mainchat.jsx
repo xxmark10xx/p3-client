@@ -7,20 +7,6 @@ export default function Mainchat({ currentUser }) {
 
   const [form, setForm] = useState('')
 
-
-  const imgs = [
-    {
-      roman: 'https://ca.slack-edge.com/T0351JZQ0-U02TU059YNM-cd5a2958a485-512'
-    },
-    {
-      andy: 'https://ca.slack-edge.com/T0351JZQ0-U02UNC9M6V6-f8aceacf7a0a-512'
-    },
-    {
-      mark: 'https://ca.slack-edge.com/T0351JZQ0-U02V9LH1XM1-69d0c65cf49d-512'
-    },
-  ]
-
-  console.log(imgs[0].roman)
   const handleSubmitTimeline = async (e) => {
     e.preventDefault()
 
@@ -36,6 +22,8 @@ export default function Mainchat({ currentUser }) {
   }
 
   const showMessage = <div className="show-message-wrapper"><h4>Please log in or register to chat!</h4></div> 
+
+  // React scroll to End of a div
 
   return (
     <div className="main-chat-wrapper">

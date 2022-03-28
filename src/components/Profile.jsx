@@ -42,6 +42,7 @@ export default function Profile({ currentUser }) {
             <p className='user-bio'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem dolorum iste tenetur tempore suscipit excepturi consectetur a cupiditate odio aliquam sunt deleniti, possimus corporis molestias hic tempora maiores perspiciatis consequatur.</p>
           </div>
           <div className='followers-wrapper'>
+          <div className='followers'>Rooms: 1000</div>
             <div className='followers'>Fallowers: 1000</div>
             <div className='following'>Fallowing: 1000</div>
             <div className='edit-profile-btn-wrapper'>
