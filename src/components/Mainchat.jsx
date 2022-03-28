@@ -3,18 +3,31 @@ import axios from "axios"
 import Message from "./Message"
 import FormChatBar from "./FormChatBar"
 import jwtDecode from "jwt-decode"
+const { io } = require("socket.io-client");
+
+const ENDPOINT = "http://localhost:3001"
+let socket, selectedChatCompare
 
 export default function Mainchat({ currentUser }) {
-
+  console.log(currentUser)
   const [form, setForm] = useState({
     content: ''
   })
 
   const scrollRef = useRef()
   const [msgs, setMsgs] = useState([])
+  const [socketConnected, setSocketConnected] = useState(false)
 
   useEffect(() => {
-    (async () => {
+    if (currentUser) {
+      socket = io(ENDPOINT)
+      socket.emit("setup", currentUser)
+      socket.on('connection', () => setSocketConnected(true))
+    }
+  }, [])
+
+  useEffect(() => {
+    const setMessages = async () => {
       try { 
         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline`)
         // set the data from the server in state
@@ -23,7 +36,8 @@ export default function Mainchat({ currentUser }) {
       } catch (err) {
         console.log(err)
       }
-    })()
+    }
+    setMessages()
    }, [])
 
   useEffect(() => {
@@ -33,9 +47,12 @@ export default function Mainchat({ currentUser }) {
   const handleSubmitTimeline = async (e) => {
     e.preventDefault()
 
+    // const markName = 'mark'
+    // socket.emit('main chat', markName)
+    
     const token = localStorage.getItem('jwt')
     // console.log(jwtDecode.decode(token))
-
+    
     const options = {
       headers: {
         'Authorization': token
@@ -44,6 +61,7 @@ export default function Mainchat({ currentUser }) {
     try {
       const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline/addmessage`, form, options)
       console.log(response)
+      socket.emit('send message', response.data.content)
     } catch (error) {
       
     }
