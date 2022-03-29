@@ -7,9 +7,9 @@ export default function Timeline({ currentUser, handleLogout }) {
 
   const [timelineMessages, setTimelineMessages] = useState(null)
 
-  useEffect(() => {
+  // useEffect(() => {
 		
-	});
+	// });
 
   return (
     <>
