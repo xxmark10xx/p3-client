@@ -26,6 +26,7 @@ export default function Mainchat({ currentUser }) {
     }
   }, [])
 
+  // can just use a function to fetch this me
   useEffect(() => {
     const setMessages = async () => {
       try { 
@@ -40,6 +41,12 @@ export default function Mainchat({ currentUser }) {
     setMessages()
    }, [])
 
+  // useEffect(() => {
+  //   socket.on('message recieved', (newMessageRecievd) => {
+  //     setMsgs([...msgs, newMessageRecievd])
+  //   })
+  // })
+  
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth"})
   }, [msgs])
@@ -47,11 +54,7 @@ export default function Mainchat({ currentUser }) {
   const handleSubmitTimeline = async (e) => {
     e.preventDefault()
 
-    // const markName = 'mark'
-    // socket.emit('main chat', markName)
-    
     const token = localStorage.getItem('jwt')
-    // console.log(jwtDecode.decode(token))
     
     const options = {
       headers: {
@@ -68,7 +71,6 @@ export default function Mainchat({ currentUser }) {
     console.log('form data', form)
   }
 
-  // console.log(currentUser.id)
 
   const showMessage = <div className="show-message-wrapper"><h4>Please log in or register to chat!</h4></div> 
 
@@ -76,8 +78,6 @@ export default function Mainchat({ currentUser }) {
   const mappedMsgs = msgs.map((message, i) => {
     return <div ref={scrollRef} key={`message-${i}`}> <Message name={message.author.name} content={message.content} createdAt={message.createdAt} avatar={message.avatar} userId={message.author._id} currentUser={currentUser} own={currentUser ? message.author._id === currentUser.id : false}/></div>
   })
-
-  // React scroll to End of a div
 
   return (
     <div className="main-chat-wrapper">
