@@ -79,6 +79,7 @@ export default function Mainchat({ currentUser }) {
           // user _id
           // currentUser 
           // owned: true or false
+          console.log("sorry yall")
         })
 
 
