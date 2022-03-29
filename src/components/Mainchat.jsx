@@ -73,13 +73,29 @@ export default function Mainchat({ currentUser }) {
           console.log("this is user data ", allData)
           // what we need
           // author name
+          console.log(`this should be name ${allData.user.user.name}`)
           // message content
+          console.log(`this should be content ${allData.content}`)
           // message createdAt
+          
           // message avatar
+          
           // user _id
+          // console.log(`this should be user_id ${allData.user.user._id}`)
           // currentUser 
+          console.log(`this should be currentuser.id ${currentUser.id}`)
           // owned: true or false
-          console.log("sorry yall")
+          console.log(`t or f for owned property ${allData.user.user._id === currentUser.id}`)
+
+          const newMessage = {
+            author: {
+              id: currentUser.id,
+              name: allData.user.user.name
+            },
+            content: allData.content
+          }
+          console.log(newMessage)
+          setMsgs([...msgs,newMessage])
         })
 
 
@@ -97,7 +113,18 @@ export default function Mainchat({ currentUser }) {
   const showMessage = <div className="show-message-wrapper"><h4>Please log in or register to chat!</h4></div> 
   
   const mappedMsgs = msgs.map((message, i) => {
-    return <div ref={scrollRef} key={`message-${i}`}> <Message name={message.author.name} content={message.content} createdAt={message.createdAt} avatar={message.avatar} userId={message.author._id} currentUser={currentUser} own={currentUser ? message.author._id === currentUser.id : false}/></div>
+    return <div 
+    ref={scrollRef} 
+    key={`message-${i}`}> 
+    <Message 
+    name={message.author.name} 
+    content={message.content} 
+    // createdAt={message.createdAt} 
+    // avatar={message.avatar} 
+    // userId={message.author._id} 
+    // currentUser={currentUser} 
+    own={currentUser ? message.author._id === currentUser.id : false}/>
+    </div>
   })
 
 
