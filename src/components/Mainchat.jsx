@@ -9,14 +9,15 @@ const ENDPOINT = "http://localhost:3001"
 let socket, selectedChatCompare
 
 export default function Mainchat({ currentUser }) {
-  console.log(currentUser)
   const [form, setForm] = useState({
     content: ''
   })
-
+  
   const scrollRef = useRef()
   const [msgs, setMsgs] = useState([])
   const [socketConnected, setSocketConnected] = useState(false)
+  
+  console.log('current user logged in: ', currentUser)
 
   useEffect(() => {
     if (currentUser) {
@@ -24,10 +25,6 @@ export default function Mainchat({ currentUser }) {
       socket.emit("setup", currentUser)
       socket.on('connection', () => setSocketConnected(true))
     }
-  }, [])
-
-  // can just use a function to fetch this me
-  useEffect(() => {
     const setMessages = async () => {
       try { 
         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline`)
@@ -39,41 +36,42 @@ export default function Mainchat({ currentUser }) {
       }
     }
     setMessages()
-   }, [])
+  }, [])
 
-  // useEffect(() => {
-  //   socket.on('message recieved', (newMessageRecievd) => {
-  //     setMsgs([...msgs, newMessageRecievd])
-  //   })
-  // })
+  console.log('messages from msgs state: ', msgs)
+  useEffect(() => {
+    if (!socket) return console.log('no socket availible')
+    socket.on('message recieved', (newMessageRecievd) => {
+      setMsgs([...msgs, newMessageRecievd])
+    })
+  }, [socketConnected])
   
+  // scroll behavior
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth"})
   }, [msgs])
   
   const handleSubmitTimeline = async (e) => {
     e.preventDefault()
-
     const token = localStorage.getItem('jwt')
-    
     const options = {
       headers: {
         'Authorization': token
       }
     }
+
     try {
       const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline/addmessage`, form, options)
-      console.log(response)
+      console.log('this is repsonse from client: ', response)
       socket.emit('send message', response.data.content)
-    } catch (error) {
       
+    } catch (error) {
+      console.log(error)
     }
-    console.log('form data', form)
+    console.log('data from formChatBar Component', form)
   }
 
-
   const showMessage = <div className="show-message-wrapper"><h4>Please log in or register to chat!</h4></div> 
-
 
   const mappedMsgs = msgs.map((message, i) => {
     return <div ref={scrollRef} key={`message-${i}`}> <Message name={message.author.name} content={message.content} createdAt={message.createdAt} avatar={message.avatar} userId={message.author._id} currentUser={currentUser} own={currentUser ? message.author._id === currentUser.id : false}/></div>
@@ -92,23 +90,8 @@ export default function Mainchat({ currentUser }) {
           </div>
           <div className="convo">
             {mappedMsgs}
-            {/* <Message />
-            <Message own={true}/>
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message own={true}/>
-            <Message />
-            <Message /> */}
           </div>
-          {currentUser ? <FormChatBar handleSubmitTimeline={handleSubmitTimeline} setForm={setForm} form={form}/> : showMessage }
-          
+          {currentUser ? <FormChatBar handleSubmitTimeline={handleSubmitTimeline} setForm={setForm} form={form}/> : showMessage}
         </div>
       </div>
     </div>
