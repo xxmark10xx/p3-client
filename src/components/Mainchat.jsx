@@ -69,33 +69,10 @@ export default function Mainchat({ currentUser }) {
         // })
 
         socket.emit("send user data", response.data)
-        socket.on("revieved all data", allData => {
-          console.log("this is user data ", allData)
-          // what we need
-          // author name
-          console.log(`this should be name ${allData.user.user.name}`)
-          // message content
-          console.log(`this should be content ${allData.content}`)
-          // message createdAt
-          
-          // message avatar
-          
-          // user _id
-          // console.log(`this should be user_id ${allData.user.user._id}`)
-          // currentUser 
-          console.log(`this should be currentuser.id ${currentUser.id}`)
-          // owned: true or false
-          console.log(`t or f for owned property ${allData.user.user._id === currentUser.id}`)
-
-          const newMessage = {
-            author: {
-              id: currentUser.id,
-              name: allData.user.user.name
-            },
-            content: allData.content
-          }
-          console.log(newMessage)
-          setMsgs([...msgs,newMessage])
+        socket.on("revieved all data", async allData => {
+          const messages = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline`)
+          // console.log(newMessage)
+          setMsgs(messages.data.messages)
         })
 
 
@@ -119,10 +96,10 @@ export default function Mainchat({ currentUser }) {
     <Message 
     name={message.author.name} 
     content={message.content} 
-    // createdAt={message.createdAt} 
-    // avatar={message.avatar} 
-    // userId={message.author._id} 
-    // currentUser={currentUser} 
+    createdAt={message.createdAt} 
+    avatar={message.avatar} 
+    userId={message.author._id} 
+    currentUser={currentUser} 
     own={currentUser ? message.author._id === currentUser.id : false}/>
     </div>
   })
