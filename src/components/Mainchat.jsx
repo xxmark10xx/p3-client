@@ -1,33 +1,29 @@
+import React from "react"
 import { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import Message from "./Message"
 import FormChatBar from "./FormChatBar"
-import jwtDecode from "jwt-decode"
-const { io } = require("socket.io-client");
+// import jwtDecode from "jwt-decode"
+import { io, Socket } from "socket.io-client"
 
-const ENDPOINT = "http://localhost:3001"
-let socket, selectedChatCompare
 
 export default function Mainchat({ currentUser }) {
-  console.log(currentUser)
+  // console.log(currentUser)
   const [form, setForm] = useState({
     content: ''
   })
-
+  
   const scrollRef = useRef()
   const [msgs, setMsgs] = useState([])
-  const [socketConnected, setSocketConnected] = useState(false)
+  const [ displayMsg, setDisplayMsg ] = useState('')
+  // const [socketConnected, setSocketConnected] = useState(false)
+  
+  console.log(msgs)
 
   useEffect(() => {
     if (currentUser) {
-      socket = io(ENDPOINT)
-      socket.emit("setup", currentUser)
-      socket.on('connection', () => setSocketConnected(true))
+      
     }
-  }, [])
-
-  // can just use a function to fetch this me
-  useEffect(() => {
     const setMessages = async () => {
       try { 
         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline`)
@@ -39,13 +35,8 @@ export default function Mainchat({ currentUser }) {
       }
     }
     setMessages()
-   }, [])
+  }, [])
 
-  // useEffect(() => {
-  //   socket.on('message recieved', (newMessageRecievd) => {
-  //     setMsgs([...msgs, newMessageRecievd])
-  //   })
-  // })
   
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth"})
@@ -63,12 +54,20 @@ export default function Mainchat({ currentUser }) {
     }
     try {
       const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline/addmessage`, form, options)
-      console.log(response)
-      socket.emit('send message', response.data.content)
+      const socket = io("http://localhost:4004") // connection to the server with socket
+      socket.on('connect', () => {
+        // console.log(`You connected with id ${Socket.id}`)
+        socket.emit('send-message', form.content)
+        socket.on("received-message", string => {
+          console.log("from the client ", string)
+          msgs.push(string)
+        })
+      })
+      // console.log(response)
     } catch (error) {
-      
+      console.log(error)
     }
-    console.log('form data', form)
+    // console.log('form data', form)
   }
 
 
@@ -92,6 +91,7 @@ export default function Mainchat({ currentUser }) {
           </div>
           <div className="convo">
             {mappedMsgs}
+            {displayMsg}
             {/* <Message />
             <Message own={true}/>
             <Message />
