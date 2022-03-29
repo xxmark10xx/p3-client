@@ -4,21 +4,16 @@ import axios from "axios"
 import Message from "./Message"
 import FormChatBar from "./FormChatBar"
 // import jwtDecode from "jwt-decode"
-import { io, Socket } from "socket.io-client"
+import { io } from "socket.io-client"
 
 
 export default function Mainchat({ currentUser }) {
-  // console.log(currentUser)
   const [form, setForm] = useState({
     content: ''
   })
   
   const scrollRef = useRef()
   const [msgs, setMsgs] = useState([])
-  const [ displayMsg, setDisplayMsg ] = useState('')
-  // const [socketConnected, setSocketConnected] = useState(false)
-  
-  console.log(msgs)
 
   useEffect(() => {
     if (currentUser) {
@@ -37,14 +32,15 @@ export default function Mainchat({ currentUser }) {
     setMessages()
   }, [])
 
-  
+
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth"})
+    
   }, [msgs])
   
   const handleSubmitTimeline = async (e) => {
     e.preventDefault()
-
+    
     const token = localStorage.getItem('jwt')
     
     const options = {
@@ -55,28 +51,54 @@ export default function Mainchat({ currentUser }) {
     try {
       const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline/addmessage`, form, options)
       const socket = io("http://localhost:4004") // connection to the server with socket
+      console.log("response from the client ", response)
+
+
+
       socket.on('connect', () => {
-        // console.log(`You connected with id ${Socket.id}`)
-        socket.emit('send-message', form.content)
-        socket.on("received-message", string => {
-          console.log("from the client ", string)
-          msgs.push(string)
+        // socket.emit('send-message', form.content) // working on trying to get an object back
+        // socket.on("received-message", string => {
+        //   console.log("from the client ", string)
+        //   // setMsgs([...msgs, string])
+        //   // msgs.push(string)
+        // })
+        // socket.emit("user-data", currentUser)
+        // socket.on("received-data", data => {
+        //   console.log("name from the client ", data.name)
+        //   console.log("id from the client ", data._id)
+        // })
+
+        socket.emit("send user data", response.data)
+        socket.on("revieved all data", allData => {
+          console.log("this is user data ", allData)
+          // what we need
+          // author name
+          // message content
+          // message createdAt
+          // message avatar
+          // user _id
+          // currentUser 
+          // owned: true or false
         })
+
+
       })
-      // console.log(response)
+
+
+
+
     } catch (error) {
       console.log(error)
     }
-    // console.log('form data', form)
   }
-
-
+  
+  
   const showMessage = <div className="show-message-wrapper"><h4>Please log in or register to chat!</h4></div> 
-
-
+  
   const mappedMsgs = msgs.map((message, i) => {
     return <div ref={scrollRef} key={`message-${i}`}> <Message name={message.author.name} content={message.content} createdAt={message.createdAt} avatar={message.avatar} userId={message.author._id} currentUser={currentUser} own={currentUser ? message.author._id === currentUser.id : false}/></div>
   })
+
 
   return (
     <div className="main-chat-wrapper">
@@ -91,7 +113,6 @@ export default function Mainchat({ currentUser }) {
           </div>
           <div className="convo">
             {mappedMsgs}
-            {displayMsg}
             {/* <Message />
             <Message own={true}/>
             <Message />
