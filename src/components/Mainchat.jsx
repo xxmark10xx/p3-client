@@ -4,7 +4,7 @@ import axios from "axios"
 import Message from "./Message"
 import FormChatBar from "./FormChatBar"
 // import jwtDecode from "jwt-decode"
-import { io, Socket } from "socket.io-client"
+import { io } from "socket.io-client"
 
 
 export default function Mainchat({ currentUser }) {
@@ -15,15 +15,14 @@ export default function Mainchat({ currentUser }) {
   
   const scrollRef = useRef()
   const [msgs, setMsgs] = useState([])
-  const [ displayMsg, setDisplayMsg ] = useState('')
   // const [socketConnected, setSocketConnected] = useState(false)
   
-  console.log(msgs)
+  // console.log(msgs)
 
   useEffect(() => {
-    if (currentUser) {
+    // if (currentUser) {
       
-    }
+    // }
     const setMessages = async () => {
       try { 
         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline`)
@@ -63,16 +62,12 @@ export default function Mainchat({ currentUser }) {
           msgs.push(string)
         })
       })
-      // console.log(response)
     } catch (error) {
       console.log(error)
     }
-    // console.log('form data', form)
   }
 
-
   const showMessage = <div className="show-message-wrapper"><h4>Please log in or register to chat!</h4></div> 
-
 
   const mappedMsgs = msgs.map((message, i) => {
     return <div ref={scrollRef} key={`message-${i}`}> <Message name={message.author.name} content={message.content} createdAt={message.createdAt} avatar={message.avatar} userId={message.author._id} currentUser={currentUser} own={currentUser ? message.author._id === currentUser.id : false}/></div>
@@ -91,21 +86,6 @@ export default function Mainchat({ currentUser }) {
           </div>
           <div className="convo">
             {mappedMsgs}
-            {displayMsg}
-            {/* <Message />
-            <Message own={true}/>
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message own={true}/>
-            <Message />
-            <Message /> */}
           </div>
           {currentUser ? <FormChatBar handleSubmitTimeline={handleSubmitTimeline} setForm={setForm} form={form}/> : showMessage }
           
