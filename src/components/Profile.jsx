@@ -38,7 +38,7 @@ export default function Profile({ currentUser }) {
   const normalProfile =
       <div className='aside-profile-wrapper'>
       <div>
-        <img className='profile-img' src="https://ca.slack-edge.com/T0351JZQ0-U02TU059YNM-cd5a2958a485-512" alt="" />
+        <img className='profile-img' src={currentUser.avatar} alt="" />
       </div>
       
       <div className='user-details-wrapper-profile'>
