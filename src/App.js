@@ -32,16 +32,35 @@ function App() {
 	};
 	return (
 		<Router>
-			<Navbar handleLogout={handleLogout} currentUser={currentUser} />
+			{/* <Navbar handleLogout={handleLogout} currentUser={currentUser} /> */}
 
 			<div className="App">
 				<Routes>
-					<Route path="/" element={<Home currentUser={currentUser} setCurrentUser={setCurrentUser} />} />
+					<Route
+						path="/"
+						element={
+							!currentUser ? (
+								<Home currentUser={currentUser} setCurrentUser={setCurrentUser} />
+							) : (
+								<Navigate to="/timeline" />
+							)
+						}
+					/>
 
 					<Route
+						path="/timeline"
+						element={
+							currentUser ? (
+								<Timeline currentUser={currentUser} handleLogout={handleLogout} />
+							) : (
+								<Navigate to="/" />
+							)
+						}
+					/>
+					{/* <Route
 						path="/login"
 						element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-					/>
+					/> */}
 					{/* 
           <Route 
             path="/profile"
@@ -49,20 +68,15 @@ function App() {
           /> 
           */}
 
-					<Route
+					{/* <Route
 						path="/profile"
 						element={currentUser ? <Profile currentUser={currentUser} /> : <Navigate to="/" />}
-					/>
+					/> */}
 
-					<Route
+					{/* <Route
 						path="/register"
 						element={<Register currentUser={currentUser} setCurrentUser={setCurrentUser} />}
-					/>
-
-					<Route
-						path="/timeline"
-						element={<Timeline currentUser={currentUser} handleLogout={handleLogout} />}
-					/>
+					/> */}
 				</Routes>
 			</div>
 		</Router>

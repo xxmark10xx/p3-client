@@ -6,7 +6,7 @@
 
 .App {
   /* text-align: center; */
-  height: 94vh;
+  height: 100vh;
   display: flex;
 }
 
@@ -67,7 +67,7 @@ nav {
 
 /* Signup Login component */
 .signuplogin-component {
-  height: 60%;
+  height: 70%;
   width: 30vw;
   /* background-color: cadetblue; */
 }
@@ -221,7 +221,7 @@ nav {
 
 /* Welcome Component */
 .welcome-component {
-  height: 40%;
+  height: 30%;
   width: 30vw;
   display: flex;
   justify-content: center;
@@ -229,7 +229,7 @@ nav {
 }
 
 .welcome-component-wrapper {
-  height: 85%;
+  height: 76%;
   width: 85%;
   /* background-color: rgba(95, 158, 160, 0.397); */
   border: 1px solid rgba(0, 0, 0, 0.10);
@@ -266,7 +266,7 @@ nav {
 }
 
 .signuplogin-component-wrapper {
-  height: 88.5%;
+  height: 90%;
   width: 85%;
   /* background-color: rgba(95, 158, 160, 0.397); */
   border: 1px solid rgba(0, 0, 0, 0.10);

@@ -15,12 +15,14 @@ export default function Aside({ currentUser, handleLogout }) {
     <div className="aside-component">
       <div className="aside-component-wrapper">
           <div className="aside-component-switches">
-            <h5 onClick={handleState} className={formState ? "login active" : 'login'}>Chat Details</h5>
-            <h5 onClick={handleState} className={formState ? 'signup' : "signup active"}>Your Profile</h5>
+            {/* <h5 onClick={handleState} className={formState ? "login active" : 'login'}>Chat Details</h5> */}
+          {/* <h5 onClick={handleState} className={formState ? 'signup' : "signup active"}>Your Profile</h5> */}
+          <h5 className={"signup active"}>Your Profile</h5>
         </div>
         {/* chat details should be wrapped with aside-component-content */}
         <div className="aside-component-content-wrap">
-          {formState ? <ChatDetails /> : <Profile currentUser={currentUser}/>}
+          {/* {formState ? <ChatDetails /> : <Profile currentUser={currentUser}/>} */}
+          <Profile currentUser={currentUser}/>
         </div>
         <div className="aside-footer">
           <Link to="/">
