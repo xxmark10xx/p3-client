@@ -9,6 +9,7 @@ export default function ChatDetails() {
       <div className="aside-title-wrapper">
         <h2>users</h2>  
       </div>
+      <div className="aside-component-content">
       <div className="chatdetails-main"> 
         {/* <div className="users-wrapper"> */}
         
@@ -71,6 +72,7 @@ export default function ChatDetails() {
               <UserChatDetails name={"Weston"} />
               <UserChatDetails name={"Weston"}/>
             {/* </div> */}
+          </div>
           </div>
       </div>
     </>
