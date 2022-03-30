@@ -135,3 +135,5 @@ export default function Mainchat({ currentUser }) {
     </div>
   )
 }
+
+console.log("this is console.log")
