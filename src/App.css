@@ -380,13 +380,27 @@ input[type="password"] {
 }
 
 .aside-component-content {
-  margin: 30px auto;
-  height: 75%;
-  width: 85%;
+  margin: 20px auto;
+  /* padding: 10px 0px; */
+  height: 83%;
+  width: 95%;
   /* padding: 0px 25px 25px 25px; */
   overflow-y: scroll;
   border-top: 1px solid rgba(0, 0, 0, 0.10);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.10); */
+  position: relative;
+  
+}
+
+.aside-component-content-wrap {
+  margin: 30px auto;
+  height: 75%;
+  width: 90%;
+  /* padding: 0px 25px 25px 25px; */
+  /* overflow-y: scroll; */
+  border-top: 1px solid rgba(0, 0, 0, 0.10);
   border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+  position: relative;
   
 }
 
@@ -432,6 +446,7 @@ input[type="password"] {
 
 /* Profile Component */
 .aside-profile-wrapper {
+
   height: 100%;
   /* margin-top: 60px; */
   /* padding: 0px 0px 25px 0px; */
@@ -489,6 +504,34 @@ input[type="password"] {
   color: black;
   cursor: pointer;
 }
+
+.go-back-btn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 3%;
+  left: 0%;
+  /* height: 40px;
+  width: 40; */
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  border-radius: 5px;
+}
+
+.go-back-img {
+  width: 17px;
+}
+
+/* .aside-component-content {
+  margin: 30px auto;
+  height: 75%;
+  width: 85%;
+  overflow-y: scroll;
+  border-top: 1px solid rgba(0, 0, 0, 0.10);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+  position: relative;
+} */
 
 /* .css-1w77di {
   position: absolute;

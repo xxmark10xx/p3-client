@@ -18,8 +18,8 @@ export default function Aside({ currentUser, handleLogout }) {
             <h5 onClick={handleState} className={formState ? "login active" : 'login'}>Chat Details</h5>
             <h5 onClick={handleState} className={formState ? 'signup' : "signup active"}>Your Profile</h5>
         </div>
-        
-        <div className="aside-component-content">
+        {/* chat details should be wrapped with aside-component-content */}
+        <div className="aside-component-content-wrap">
           {formState ? <ChatDetails /> : <Profile currentUser={currentUser}/>}
         </div>
         <div className="aside-footer">

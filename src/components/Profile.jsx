@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import EditProfile from './EditProfile'
 
 export default function Profile({ currentUser }) {
   const [msg, setMsg] = useState('') 
+  const [openEdit, setOpenEdit] = useState(false)
   // use useEffect to get data from the back
   useEffect(() => {
     (async () => {
@@ -28,29 +30,38 @@ export default function Profile({ currentUser }) {
     })()
    }, [])
 
-  console.log(currentUser)
-  return (
-    <>
+  const handleEditPage = () => {
+    setOpenEdit(!openEdit)
+  }
+  
+  // console.log(currentUser)
+  const normalProfile =
       <div className='aside-profile-wrapper'>
-        <div>
-          <img className='profile-img' src="https://ca.slack-edge.com/T0351JZQ0-U02TU059YNM-cd5a2958a485-512" alt="" />
-        </div>
-        <a href="">change avatar</a>
-        <div className='user-details-wrapper-profile'>
-          <h3>@{currentUser.name}</h3>
-          <div className='user-bio-wrapper'>
-            <p className='user-bio'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem dolorum iste tenetur tempore suscipit excepturi consectetur a cupiditate odio aliquam sunt deleniti, possimus corporis molestias hic tempora maiores perspiciatis consequatur.</p>
-          </div>
-          <div className='followers-wrapper'>
-          <div className='followers'>Rooms: 1000</div>
-            <div className='followers'>Fallowers: 1000</div>
-            <div className='following'>Fallowing: 1000</div>
-            <div className='edit-profile-btn-wrapper'>
-              <button className='edit-profile-btn'>Edit Profile</button>
-            </div>
-          </div>
+      <div>
+        <img className='profile-img' src="https://ca.slack-edge.com/T0351JZQ0-U02TU059YNM-cd5a2958a485-512" alt="" />
+      </div>
+      
+      <div className='user-details-wrapper-profile'>
+        <h3>@{currentUser.name}</h3>
+      <div className='user-bio-wrapper'>
+        <p className='user-bio'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem dolorum iste tenetur tempore suscipit excepturi consectetur a cupiditate odio aliquam sunt deleniti, possimus corporis molestias hic tempora maiores perspiciatis consequatur.</p>
+      </div>
+      <div className='followers-wrapper'>
+        {/* <div className='followers'>Rooms: 1000</div>
+        <div className='followers'>Fallowers: 1000</div>
+        <div className='following'>Fallowing: 1000</div> */}
+        <div className='edit-profile-btn-wrapper'>
+          <button onClick={handleEditPage} className='edit-profile-btn'>Edit Profile</button>
         </div>
       </div>
+    </div>
+    </div>
+  
+  return (
+    <>
+      {/* {normalProfile} */}
+      {openEdit ? <EditProfile handleEditPage={handleEditPage} currentUser={currentUser} /> : normalProfile }
+      
     </>
   )
 }
