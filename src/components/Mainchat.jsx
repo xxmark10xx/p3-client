@@ -5,32 +5,42 @@ import Message from "./Message"
 import FormChatBar from "./FormChatBar"
 // import jwtDecode from "jwt-decode"
 import { io } from "socket.io-client"
+let socket
 
 
 export default function Mainchat({ currentUser }) {
   const [form, setForm] = useState({
     content: ''
   })
-  
   const scrollRef = useRef()
   const [msgs, setMsgs] = useState([])
 
+  const [ socketState, setSocketState ] = useState(false)
+  
   useEffect(() => {
-    // if (currentUser) {
-      
-    // }
     const setMessages = async () => {
       try { 
+        socket = io("http://localhost:4004")
+        socket.on("connect", () => {
+          setSocketState(true)
+        })
+        socket.on("recieved all data", async allData => {
+          console.log("checking callback")
+          const messages = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline`)
+          setMsgs(messages.data.messages)
+        })
         const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline`)
         // set the data from the server in state
         console.log(response.data.messages)
+        console.log(currentUser)
+
         setMsgs(response.data.messages)
       } catch (err) {
         console.log(err)
       }
     }
     setMessages()
-  }, [])
+  }, [socketState])
 
 
   useEffect(() => {
@@ -50,33 +60,18 @@ export default function Mainchat({ currentUser }) {
     }
     try {
       const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline/addmessage`, form, options)
-      const socket = io("http://localhost:4004") // connection to the server with socket
-      console.log("response from the client ", response)
+      
+      // socket stuff 
 
-
-
-      socket.on('connect', () => {
-        // socket.emit('send-message', form.content) // working on trying to get an object back
-        // socket.on("received-message", string => {
-        //   console.log("from the client ", string)
-        //   // setMsgs([...msgs, string])
-        //   // msgs.push(string)
-        // })
-        // socket.emit("user-data", currentUser)
-        // socket.on("received-data", data => {
-        //   console.log("name from the client ", data.name)
-        //   console.log("id from the client ", data._id)
-        // })
-
+      // connection to the server with socket
+      // console.log("response from the client ", response)
+      
         socket.emit("send user data", response.data)
-        socket.on("revieved all data", async allData => {
+        socket.on("recieved all data", async allData => {
+          console.log("checking callback")
           const messages = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline`)
-          // console.log(newMessage)
           setMsgs(messages.data.messages)
         })
-
-
-      })
 
 
 
