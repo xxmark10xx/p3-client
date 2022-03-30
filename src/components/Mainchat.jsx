@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import Message from "./Message"
 import FormChatBar from "./FormChatBar"
-// import jwtDecode from "jwt-decode"
 import { io } from "socket.io-client"
 let socket
 
@@ -14,7 +13,6 @@ export default function Mainchat({ currentUser }) {
   })
   const scrollRef = useRef()
   const [msgs, setMsgs] = useState([])
-
   const [ socketState, setSocketState ] = useState(false)
   
   useEffect(() => {
@@ -25,15 +23,11 @@ export default function Mainchat({ currentUser }) {
           setSocketState(true)
         })
         socket.on("recieved all data", async allData => {
-          console.log("checking callback")
-          const messages = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline`)
+          const messages = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline/`)
           setMsgs(messages.data.messages)
         })
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline`)
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline/`)
         // set the data from the server in state
-        console.log(response.data.messages)
-        console.log(currentUser)
-
         setMsgs(response.data.messages)
       } catch (err) {
         console.log(err)
@@ -41,18 +35,15 @@ export default function Mainchat({ currentUser }) {
     }
     setMessages()
   }, [socketState])
-
-
+  //useeffect to keep page on bottom of chat
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth"})
-    
   }, [msgs])
   
   const handleSubmitTimeline = async (e) => {
     e.preventDefault()
-    
+    //grab the token to pass for auth
     const token = localStorage.getItem('jwt')
-    
     const options = {
       headers: {
         'Authorization': token
@@ -60,22 +51,12 @@ export default function Mainchat({ currentUser }) {
     }
     try {
       const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline/addmessage`, form, options)
-      
-      // socket stuff 
 
-      // connection to the server with socket
-      // console.log("response from the client ", response)
-      
-        socket.emit("send user data", response.data)
-        socket.on("recieved all data", async allData => {
-          console.log("checking callback")
-          const messages = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline`)
-          setMsgs(messages.data.messages)
-        })
-
-
-
-
+      socket.emit("send user data", response.data)
+      socket.on("recieved all data", async allData => {
+        const messages = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/timeline/`)
+        setMsgs(messages.data.messages)
+      })
     } catch (error) {
       console.log(error)
     }
@@ -113,27 +94,10 @@ export default function Mainchat({ currentUser }) {
           </div>
           <div className="convo">
             {mappedMsgs}
-            {/* <Message />
-            <Message own={true}/>
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message own={true}/>
-            <Message />
-            <Message /> */}
           </div>
           {currentUser ? <FormChatBar handleSubmitTimeline={handleSubmitTimeline} setForm={setForm} form={form}/> : showMessage }
-          
         </div>
       </div>
     </div>
   )
 }
-
-console.log("this is console.log")
