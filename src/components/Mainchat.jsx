@@ -65,7 +65,7 @@ export default function Mainchat({ currentUser, setClickedUserData, clickedUserD
   
   
   const showMessage = <div className="show-message-wrapper"><h4>Please log in or register to chat!</h4></div> 
-  
+  console.log(msgs)
   const mappedMsgs = msgs.map((message, i) => {
     return <div 
     ref={scrollRef} 
@@ -78,14 +78,14 @@ export default function Mainchat({ currentUser, setClickedUserData, clickedUserD
     name={message.author.name} 
     content={message.content} 
     createdAt={message.createdAt} 
-    avatar={message.avatar} 
+    avatar={message.author.avatar} 
     userId={message.author._id} 
     currentUser={currentUser} 
     own={currentUser ? message.author._id === currentUser.id : false}/>
     </div>
   })
 
-
+ 
   return (
     <div className="main-chat-wrapper">
       <div className="main-chat-inner-wrapper">
