@@ -1,4 +1,29 @@
+import { useState } from "react"
+import axios from "axios"
+
 export default function EditProfile({ currentUser, handleEditPage }) {
+  const [ editForm, setEditForm ] = useState({
+    name: "",
+    bio: "",
+  })
+  const [ formImg, setFormImg ] = useState("")
+  
+
+  const handleEditSave = async (e) => {
+    e.preventDefault()
+    try{
+      const fd = new FormData()
+      fd.append("image", formImg)
+      // console.log(fd)
+
+      const uploadedImage = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/images`, fd )
+      setEditForm(uploadedImage)
+    }catch(err) {
+      console.log(err)
+    }
+  }
+
+
   return (
     <>
       <div className='aside-profile-wrapper'>
@@ -11,7 +36,7 @@ export default function EditProfile({ currentUser, handleEditPage }) {
         <form>
             <div className='login-form-email'>
               <label className='label' htmlFor="image-upload">Change Avatar</label>
-              <input type="file" src="" alt="" id='image-upload' name="image-upload"/>
+              <input type="file" src="" alt="" id='image-upload' name="image" onChange={e => setFormImg(e.target.files[0])}/>
 
               <label className='label' htmlFor="username"></label>
               <input 
@@ -25,7 +50,7 @@ export default function EditProfile({ currentUser, handleEditPage }) {
             
 
             <div className='edit-profile-btn-wrapper'>
-                <button className='edit-profile-btn'>Save</button>
+                <button onClick={handleEditSave} className='edit-profile-btn'>Save</button>
             </div>
           </form>
         </div>

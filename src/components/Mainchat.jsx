@@ -91,10 +91,6 @@ export default function Mainchat({ currentUser, setClickedUserData, clickedUserD
       <div className="main-chat-inner-wrapper">
         <div className="form-post">
           <div className="people-online-wrapper">
-            {/* <div className="people-online-wrapper-details">
-              <div className="dot-online"></div>
-              <h4 className="people-online">42 Users online</h4>
-            </div> */}
             <h4 className="people-online">Main Chatroom</h4>
           </div>
           <div className="convo">

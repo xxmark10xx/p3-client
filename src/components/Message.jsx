@@ -17,12 +17,9 @@ export default function Message({ own, name, content, createdAt, avatar, userId,
      const foundUser = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api-v1/profile/${userId}`)
      console.log("data from backend ", foundUser)
      setClickedUserData(foundUser.data)
-    //  console.log("this data is in state ",clickedUserData)
     if (currentUser.id !== foundUser.data._id) {
       setClickedUserProfile(true)
-      
     }
-     
     }catch(err) {
       console.log(err)
     }
