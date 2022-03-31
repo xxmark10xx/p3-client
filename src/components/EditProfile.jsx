@@ -4,16 +4,35 @@ import axios from "axios"
 export default function EditProfile({ currentUser, handleEditPage }) {
   // setting state for the profile image
   const [ formImg, setFormImg ] = useState("")
+  // setting state for the editForm
+  const [ ]
 
   const handleSaveImg = async (e) => {
     e.preventDefault()
+    const token = localStorage.getItem('jwt')
+    const options = {
+      headers: {
+        'Authorization': token
+      },
+      new : true
+    }
+    
     try{
       const fd = new FormData()
       fd.append("image", formImg)
 
-      // axios call to post the img to the database
-      const uploadedImg = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/images`, fd, options)
-    }catch (err) {
+      // axios call to get and update the current users profile img
+      const uploadedImage = await axios.put(`${process.env.REACT_APP_SERVER_URL}/api-v1/images`, fd, options )
+      setCurrentUser({
+        id: currentUser.id,
+        name: currentUser.name,
+        email: currentUser.email,
+        iat: currentUser.iat,
+        exp: currentUser.exp,
+        bio: editForm.bio,
+        avatar: uploadedImage.data.cloudImage
+      })
+    }catch(err) {
       console.log(err)
     }
   }
