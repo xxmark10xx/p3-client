@@ -48,7 +48,11 @@ export default function EditProfile({ setCurrentUser, currentUser, handleEditPag
         <form>
             <div className='login-form-email'>
               <label className='label' htmlFor="image-upload">Change Avatar</label>
-              <input type="file" src="" alt="" id='image-upload' name="image-upload"/>
+              <input type="file" src="" alt="" id='image-upload' name="image-upload" onChange={e => setFormImg(e.target.files[0])}/>
+
+              <div className='edit-profile-btn-wrapper'>
+                <button onClick={handleSaveImg} className='edit-profile-btn'>Save Profile Image</button>
+              </div>
 
               <label className='label' htmlFor="username"></label>
               <input 
@@ -61,9 +65,9 @@ export default function EditProfile({ setCurrentUser, currentUser, handleEditPag
             </div>
             
 
-            <div className='edit-profile-btn-wrapper'>
+            {/* <div className='edit-profile-btn-wrapper'>
                 <button onClick={handleSaveImg} className='edit-profile-btn'>Save</button>
-            </div>
+            </div> */}
           </form>
         </div>
         <div className='followers-wrapper'>
