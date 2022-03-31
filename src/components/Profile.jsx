@@ -34,7 +34,7 @@ export default function Profile({ currentUser }) {
     setOpenEdit(!openEdit)
   }
   
-  // console.log(currentUser)
+  console.log("this is the current user ",currentUser)
   const normalProfile =
       <div className='aside-profile-wrapper'>
       <div>
