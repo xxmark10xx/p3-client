@@ -6,7 +6,6 @@ export default function OtherUserProfile({ clickedUserData }) {
   const [msg, setMsg] = useState('') 
   const [openEdit, setOpenEdit] = useState(false)
 
-  git 
 //   console.log("this is the current user ",currentUser)
   const normalProfile =
       <div className='aside-profile-wrapper'>
