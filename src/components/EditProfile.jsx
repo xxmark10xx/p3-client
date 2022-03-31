@@ -1,4 +1,23 @@
+import { useState } from "react"
+import axios from "axios"
+
 export default function EditProfile({ currentUser, handleEditPage }) {
+  // setting state for the profile image
+  const [ formImg, setFormImg ] = useState("")
+
+  const handleSaveImg = async (e) => {
+    e.preventDefault()
+    try{
+      const fd = new FormData()
+      fd.append("image", formImg)
+
+      // axios call to post the img to the database
+      const uploadedImg = await axios.post(`${process.env.REACT_APP_SERVER_URL}/api-v1/images`, fd, options)
+    }catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <>
       <div className='aside-profile-wrapper'>
