@@ -3,12 +3,7 @@ import Profile from "./Profile"
 import { Link } from "react-router-dom"
 
 export default function Aside({ currentUser, handleLogout }) {
-    const [formState, setFormState] = useState(true)
-
-    const handleState = () => {
-        setFormState(!formState)
-    }
-
+    
     return (
         <div className="aside-component">
             <div className="aside-component-wrapper">
