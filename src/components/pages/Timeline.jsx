@@ -15,7 +15,7 @@ export default function Timeline({ currentUser, handleLogout }) {
     <>
       <div className="timeline-wrapper">
 
-      {!clickedUserProfile ? <Aside currentUser={currentUser} handleLogout={handleLogout}/> : <UserData clickedUserData={clickedUserData} currentUser={currentUser}/>}
+      {!clickedUserProfile ? <Aside currentUser={currentUser} handleLogout={handleLogout}/> : <UserData setClickedUserProfile={setClickedUserProfile} clickedUserData={clickedUserData} currentUser={currentUser}/>}
       </div>
       <div className="timeline-wrapper-rightside">
         <Mainchat currentUser={currentUser} setClickedUserData={setClickedUserData} clickedUserData={clickedUserData}
