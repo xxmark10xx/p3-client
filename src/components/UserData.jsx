@@ -4,7 +4,7 @@ import Profile from "./Profile"
 import { Link } from 'react-router-dom'
 import OtherUserProfile from "./OtherUserProfile"
 
-export default function UserData({ currentUser, handleLogout, clickedUserData }) {
+export default function UserData({ currentUser, handleLogout, clickedUserData, setClickedUserProfile }) {
 
   const [formState, setFormState] = useState(true)
 
@@ -23,7 +23,7 @@ export default function UserData({ currentUser, handleLogout, clickedUserData })
         {/* chat details should be wrapped with aside-component-content */}
         <div className="aside-component-content-wrap">
           {/* {formState ? <ChatDetails /> : <Profile currentUser={currentUser}/>} */}
-          <OtherUserProfile clickedUserData={clickedUserData} />
+          <OtherUserProfile setClickedUserProfile={setClickedUserProfile} clickedUserData={clickedUserData} />
         </div>
         <div className="aside-footer">
           <Link to="/">

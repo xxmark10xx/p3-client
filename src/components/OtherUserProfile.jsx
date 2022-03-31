@@ -2,17 +2,21 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import EditProfile from './EditProfile'
 
-export default function OtherUserProfile({ clickedUserData }) {
+export default function OtherUserProfile({ clickedUserData, setClickedUserProfile }) {
   const [msg, setMsg] = useState('') 
   const [openEdit, setOpenEdit] = useState(false)
 
-  git 
+  const handleBackToProfile =  () => {
+    setClickedUserProfile(false)
+  }
 //   console.log("this is the current user ",currentUser)
   const normalProfile =
       <div className='aside-profile-wrapper'>
       <div>
         <img className='profile-img' src={clickedUserData.avatar} alt="" />
       </div>
+
+      <button onClick={handleBackToProfile}>go back</button>
 
       <h5>This is another user {clickedUserData.name}</h5>
       
