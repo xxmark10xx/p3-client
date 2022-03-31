@@ -3,7 +3,7 @@ import ChatDetails from "./ChatDetails"
 import Profile from "./Profile"
 import { Link } from 'react-router-dom'
 
-export default function Aside({ currentUser, handleLogout }) {
+export default function Aside({ setCurrentUser, currentUser, handleLogout }) {
 
   const [formState, setFormState] = useState(true)
 
@@ -22,7 +22,7 @@ export default function Aside({ currentUser, handleLogout }) {
         {/* chat details should be wrapped with aside-component-content */}
         <div className="aside-component-content-wrap">
           {/* {formState ? <ChatDetails /> : <Profile currentUser={currentUser}/>} */}
-          <Profile currentUser={currentUser}/>
+          <Profile setCurrentUser={setCurrentUser} currentUser={currentUser}/>
         </div>
         <div className="aside-footer">
           <Link to="/">

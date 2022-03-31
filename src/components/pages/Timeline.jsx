@@ -4,7 +4,7 @@ import Mainchat from "../Mainchat";
 import UserData from "../UserData"
 
 
-export default function Timeline({ currentUser, handleLogout }) {
+export default function Timeline({ setCurrentUser, currentUser, handleLogout }) {
   const [ clickedUserData, setClickedUserData ] = useState()
   const [ clickedUserProfile, setClickedUserProfile ] = useState(false)
 
@@ -15,7 +15,7 @@ export default function Timeline({ currentUser, handleLogout }) {
     <>
       <div className="timeline-wrapper">
 
-      {!clickedUserProfile ? <Aside currentUser={currentUser} handleLogout={handleLogout}/> : <UserData setClickedUserProfile={setClickedUserProfile} clickedUserData={clickedUserData} currentUser={currentUser}/>}
+      {!clickedUserProfile ? <Aside setCurrentUser={setCurrentUser} currentUser={currentUser} handleLogout={handleLogout}/> : <UserData setClickedUserProfile={setClickedUserProfile} clickedUserData={clickedUserData} currentUser={currentUser}/>}
       </div>
       <div className="timeline-wrapper-rightside">
         <Mainchat currentUser={currentUser} setClickedUserData={setClickedUserData} clickedUserData={clickedUserData}

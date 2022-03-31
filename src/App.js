@@ -51,7 +51,7 @@ function App() {
 						path="/timeline"
 						element={
 							currentUser ? (
-								<Timeline currentUser={currentUser} handleLogout={handleLogout} />
+								<Timeline setCurrentUser={setCurrentUser} currentUser={currentUser} handleLogout={handleLogout} />
 							) : (
 								<Navigate to="/" />
 							)

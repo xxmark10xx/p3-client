@@ -7,7 +7,7 @@ import { io } from "socket.io-client"
 let socket
 
 
-export default function Mainchat({ currentUser, setClickedUserData, clickedUserData, clickedUserProfile,
+export default function Mainchat({ setCurrentUser, currentUser, setClickedUserData, clickedUserData, clickedUserProfile,
   setClickedUserProfile}) {
   const [form, setForm] = useState({
     content: ''
@@ -81,6 +81,7 @@ export default function Mainchat({ currentUser, setClickedUserData, clickedUserD
     avatar={message.avatar} 
     userId={message.author._id} 
     currentUser={currentUser} 
+    setCurrentUser={setCurrentUser}
     own={currentUser ? message.author._id === currentUser.id : false}/>
     </div>
   })

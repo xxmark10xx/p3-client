@@ -1,11 +1,10 @@
 import { useState } from "react"
 import axios from "axios"
 
-export default function EditProfile({ currentUser, handleEditPage }) {
+export default function EditProfile({ setCurrentUser, currentUser, handleEditPage }) {
   // setting state for the profile image
   const [ formImg, setFormImg ] = useState("")
-  // setting state for the editForm
-  const [ ]
+  
 
   const handleSaveImg = async (e) => {
     e.preventDefault()
@@ -29,7 +28,7 @@ export default function EditProfile({ currentUser, handleEditPage }) {
         email: currentUser.email,
         iat: currentUser.iat,
         exp: currentUser.exp,
-        bio: editForm.bio,
+        // bio: editForm.bio,
         avatar: uploadedImage.data.cloudImage
       })
     }catch(err) {
@@ -42,7 +41,7 @@ export default function EditProfile({ currentUser, handleEditPage }) {
       <div className='aside-profile-wrapper'>
         <div className="go-back-btn" onClick={handleEditPage}><img className="go-back-img" src="arrow-left.svg" alt="arrow left" /></div>
         <div>
-          <img className='profile-img' src="https://ca.slack-edge.com/T0351JZQ0-U02TU059YNM-cd5a2958a485-512" alt="" />
+          <img className='profile-img' src={currentUser.avatar} alt="profile-img" />
         </div>
         <div className='user-details-wrapper-profile'>
         <div className='login-form-email'>
@@ -63,7 +62,7 @@ export default function EditProfile({ currentUser, handleEditPage }) {
             
 
             <div className='edit-profile-btn-wrapper'>
-                <button className='edit-profile-btn'>Save</button>
+                <button onClick={handleSaveImg} className='edit-profile-btn'>Save</button>
             </div>
           </form>
         </div>
