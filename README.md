@@ -28,7 +28,8 @@ Andy
 ![ERD](./public/newerd.png)
 
 # Wireframes
-![Wireframes](./public/wireframes.png)
+![landing page](./public/Untitled.png)
+![logged in view](./public/Untitled%202.png)
 
 # MVP goals
 - chat app usable by many users at once
