@@ -19,7 +19,7 @@ export default function Message({ own, name, content, createdAt, avatar, userId,
      setClickedUserData(foundUser.data)
     //  console.log("this data is in state ",clickedUserData)
     if (currentUser.id !== foundUser.data._id) {
-      setClickedUserProfile(!clickedUserProfile)
+      setClickedUserProfile(true)
       
     }
      
