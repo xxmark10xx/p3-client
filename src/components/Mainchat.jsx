@@ -7,7 +7,8 @@ import { io } from "socket.io-client"
 let socket
 
 
-export default function Mainchat({ currentUser }) {
+export default function Mainchat({ currentUser, setClickedUserData, clickedUserData, clickedUserProfile,
+  setClickedUserProfile}) {
   const [form, setForm] = useState({
     content: ''
   })
@@ -70,6 +71,10 @@ export default function Mainchat({ currentUser }) {
     ref={scrollRef} 
     key={`message-${i}`}> 
     <Message 
+    clickedUserProfile={clickedUserProfile}
+    setClickedUserProfile={setClickedUserProfile}
+    clickedUserData={clickedUserData}
+    setClickedUserData={setClickedUserData}
     name={message.author.name} 
     content={message.content} 
     createdAt={message.createdAt} 
