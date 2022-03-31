@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import EditProfile from "./EditProfile"
 
-export default function Profile({ currentUser }) {
+export default function Profile({ setCurrentUser, currentUser }) {
     const [msg, setMsg] = useState("")
     const [openEdit, setOpenEdit] = useState(false)
 
@@ -66,6 +66,7 @@ export default function Profile({ currentUser }) {
         <>
             {openEdit ? (
                 <EditProfile
+                    setCurrentUser={setCurrentUser}
                     handleEditPage={handleEditPage}
                     currentUser={currentUser}
                 />

@@ -2,7 +2,7 @@ import { useState } from "react"
 import Profile from "./Profile"
 import { Link } from "react-router-dom"
 
-export default function Aside({ currentUser, handleLogout }) {
+export default function Aside({ setCurrentUser, currentUser, handleLogout }) {
     
     return (
         <div className="aside-component">
@@ -11,7 +11,7 @@ export default function Aside({ currentUser, handleLogout }) {
                     <h5 className={"signup active"}>Your Profile</h5>
                 </div>
                 <div className="aside-component-content-wrap">
-                    <Profile currentUser={currentUser} />
+                    <Profile setCurrentUser={setCurrentUser} currentUser={currentUser} />
                 </div>
                 <div className="aside-footer">
                     <Link to="/">

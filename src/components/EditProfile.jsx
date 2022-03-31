@@ -1,23 +1,39 @@
 import { useState } from "react"
 import axios from "axios"
 
-export default function EditProfile({ currentUser, handleEditPage }) {
-    const [editForm, setEditForm] = useState({
-        name: "",
-        bio: "",
+export default function EditProfile({ setCurrentUser, currentUser, handleEditPage }) {
+    const [ editProfile, setEditProfile ] = useState({
+      name: currentUser.name,
+      bio: currentUser.bio
     })
     const [formImg, setFormImg] = useState("")
 
-    const handleEditSave = async (e) => {
-        e.preventDefault()
+    const handleSaveImg = async (e) => {
+        e.preventDefault() 
+        const token = localStorage.getItem('jwt')
+        const options = {
+            headers: {
+              'Authorization': token
+            },
+            new : true
+        }
         try {
             const fd = new FormData()
             fd.append("image", formImg)
-            const uploadedImage = await axios.post(
+            // axios call to get and update the current users profile-img
+            const uploadedImage = await axios.put(
                 `${process.env.REACT_APP_SERVER_URL}/api-v1/images`,
-                fd
+                fd, options
             )
-            setEditForm(uploadedImage)
+            setCurrentUser({
+                id: currentUser.id,
+                name: currentUser.name,
+                email: currentUser.email,
+                iat: currentUser.iat,
+                exp: currentUser.exp,
+                // bio: editForm.bio,
+                avatar: uploadedImage.data.cloudImage
+            })
         } catch (err) {
             console.log(err)
         }
@@ -36,7 +52,7 @@ export default function EditProfile({ currentUser, handleEditPage }) {
                 <div>
                     <img
                         className="profile-img"
-                        src="https://ca.slack-edge.com/T0351JZQ0-U02TU059YNM-cd5a2958a485-512"
+                        src={currentUser.avatar}
                         alt=""
                     />
                 </div>
@@ -71,7 +87,7 @@ export default function EditProfile({ currentUser, handleEditPage }) {
 
                             <div className="edit-profile-btn-wrapper">
                                 <button
-                                    onClick={handleEditSave}
+                                    onClick={handleSaveImg}
                                     className="edit-profile-btn"
                                 >
                                     Save
