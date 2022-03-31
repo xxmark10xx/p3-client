@@ -39,22 +39,25 @@ export default function Profile({ currentUser }) {
         <a href="">change avatar</a>
         <div className='user-details-wrapper-profile'>
           <form>
-          <div className='login-form-email'>
-            <label className='label' htmlFor="username">:</label>
-            <input 
-              
-            />
-          </div>
+            <div className='login-form'>
+              <label className='label' htmlFor="image-upload"></label>
+              <input type="image" src="" alt="" id='image-upload' name="image-upload"/>
 
-          <div className='login-form-password'>
-            <label className='label' htmlFor="bio"></label>
-            <input 
-              
-            />
-          </div>
+              <label className='label' htmlFor="username">:</label>
+              <input 
+                
+              />
+            </div>
 
-          <input className='submit-btn' type="submit" />
-        </form>
+            <div className='login-form-password'>
+              <label className='label' htmlFor="bio"></label>
+              <input 
+                
+              />
+            </div>
+
+            <input className='submit-btn' type="submit" />
+          </form>
           <h3>@{currentUser.name}</h3>
           <div className='user-bio-wrapper'>
             <p className='user-bio'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem dolorum iste tenetur tempore suscipit excepturi consectetur a cupiditate odio aliquam sunt deleniti, possimus corporis molestias hic tempora maiores perspiciatis consequatur.</p>

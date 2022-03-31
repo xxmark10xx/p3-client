@@ -5,7 +5,7 @@ import EditProfile from './EditProfile'
 export default function Profile({ currentUser }) {
   const [msg, setMsg] = useState('') 
   const [openEdit, setOpenEdit] = useState(false)
-  // use useEffect to get data from the back
+  
   useEffect(() => {
     (async () => {
       try {
