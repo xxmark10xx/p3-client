@@ -26,7 +26,6 @@ export default function Message({ own, name, content, createdAt, avatar, userId,
   }
   // we need to get the id from the backend with an axios call
  
- 
   return (
     // <div className={own ? "message own" : "message"}>
     <div className={own ? "message own" : "message"}>
@@ -36,7 +35,7 @@ export default function Message({ own, name, content, createdAt, avatar, userId,
         <div>
           <img
             className="message-img"
-            src="https://ca.slack-edge.com/T0351JZQ0-U02TU059YNM-cd5a2958a485-512"
+            src={avatar}
             alt="" />
           
 
