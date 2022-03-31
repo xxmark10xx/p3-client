@@ -9,6 +9,11 @@ export default function Login({ currentUser, setCurrentUser }) {
         password: "",
     })
     const [msg, setMessage] = useState("")
+    const [passShown, setPassShown] = useState(false)
+
+    const togglePassword = () =>{
+        setPassShown(!passShown)
+    }
 
     let navigate = useNavigate()
 
@@ -59,12 +64,13 @@ export default function Login({ currentUser, setCurrentUser }) {
                     </label>
                     <input
                         id="password"
-                        type="password"
+                        type={passShown ? "text" : "password"}
                         onChange={(e) =>
                             setForm({ ...form, password: e.target.value })
                         }
                         value={form.password}
                     />
+                    <button onClick={togglePassword}>show password</button>
                 </div>
 
                 <input className="submit-btn" type="submit" />
