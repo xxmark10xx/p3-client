@@ -72,6 +72,8 @@ export default function Mainchat({
                 )
                 setMsgs(messages.data.messages)
             })
+            //reset form to blank after submission of message
+            setForm({content: ""})
         } catch (error) {
             console.log(error)
         }
