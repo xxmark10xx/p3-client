@@ -9,11 +9,23 @@ export default function OtherUserProfile({
     const [msg, setMsg] = useState("")
     const [openEdit, setOpenEdit] = useState(false)
 
+    const handleEditPage = () => {
+        setOpenEdit(!openEdit)
+    }
+
     const handleBackToProfile = () => {
         setClickedUserProfile(false)
     }
     const normalProfile = (
         <div className="aside-profile-wrapper">
+            <div className="go-back-btn" onClick={handleBackToProfile}>
+                    <img
+                        className="go-back-img"
+                        src="arrow-left.svg"
+                        alt="arrow left"
+                        />
+                </div>
+            
             <div>
                 <img
                     className="profile-img"
@@ -22,19 +34,13 @@ export default function OtherUserProfile({
                 />
             </div>
 
-            <button onClick={handleBackToProfile}>go back</button>
-
-            <h5>This is another user {clickedUserData.name}</h5>
+            {/* <button onClick={handleBackToProfile}>go back</button> */}
 
             <div className="user-details-wrapper-profile">
-                <h3>@Mark</h3>
+                <h3>{clickedUserData.name}</h3>
                 <div className="user-bio-wrapper">
                     <p className="user-bio">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Dolorem dolorum iste tenetur tempore suscipit
-                        excepturi consectetur a cupiditate odio aliquam sunt
-                        deleniti, possimus corporis molestias hic tempora
-                        maiores perspiciatis consequatur.
+                        {clickedUserData.bio}
                     </p>
                 </div>
                 <div className="followers-wrapper"></div>

@@ -92,10 +92,11 @@ export default function EditProfile({ setCurrentUser, currentUser, handleEditPag
                 <div className="user-details-wrapper-profile">
                     <div className="login-form-email">
                         <form>
-                                <label className="label" htmlFor="image-upload">
-                                    Change Avatar
+                                <label className="label spacer" htmlFor="image-upload">
+                                    
                                 </label>
-                                <input
+                            <input
+                                className="file-upload-btn-x"
                                     type="file"
                                     src=""
                                     alt=""
@@ -109,7 +110,7 @@ export default function EditProfile({ setCurrentUser, currentUser, handleEditPag
                                 <div className="edit-profile-btn-wrapper">
                                     <button
                                         onClick={handleSaveImg}
-                                        className="edit-profile-btn"
+                                        className="save-profile-btn"
                                         >
                                             Save
                                     </button>
@@ -144,7 +145,7 @@ export default function EditProfile({ setCurrentUser, currentUser, handleEditPag
                             <div className="edit-profile-btn-wrapper">
                                 <button
                                     onClick={handleSaveText}
-                                    className="edit-profile-btn"
+                                    className="save-profile-btn"
                                 >
                                     Save
                                 </button>

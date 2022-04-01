@@ -39,7 +39,7 @@ export default function Profile({ setCurrentUser, currentUser }) {
             </div>
 
             <div className="user-details-wrapper-profile">
-                <h3>@{currentUser.name}</h3>
+                <h3>{currentUser.name}</h3>
                 <div className="user-bio-wrapper">
                     <p className="user-bio">
                        {currentUser.bio}

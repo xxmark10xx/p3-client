@@ -12,6 +12,17 @@ export default function Register({ currentUser, setCurrentUser }) {
     })
     const [msg, setMsg] = useState("")
 
+    const [passShown, setPassShown] = useState(false)
+    const [passShownSecond, setPassShownSecond] = useState(false)
+
+    const togglePassword = () =>{
+        setPassShown(!passShown)
+    }
+
+    const togglePasswordSecond = () =>{
+        setPassShownSecond(!passShownSecond)
+    }
+
     let navigate = useNavigate()
 
     const handleSubmit = async (e) => {
@@ -84,12 +95,13 @@ export default function Register({ currentUser, setCurrentUser }) {
                     />
                 </div>
 
-                <div className="login-form-email">
+                <div className="login-form-password-second">
                     <label className="label" htmlFor="password">
                         Password:
                     </label>
                     <input
-                        type="password"
+                         className="make-longer"
+                         type={passShown ? "text" : "password"}
                         id="password"
                         value={form.password}
                         onChange={(e) =>
@@ -97,14 +109,16 @@ export default function Register({ currentUser, setCurrentUser }) {
                         }
                         placeholder="enter your password..."
                     />
+                    <div className="eye-wrapper" onClick={togglePassword}><img className="eye-password-icon" src="eye.png" alt="" /></div>
                 </div>
 
-                <div className="login-form-email">
+                <div className="login-form-password-second">
                     <label className="label" htmlFor="passwordConfirmation">
                         Confirmation:
                     </label>
                     <input
-                        type="password"
+                         className="make-longer"
+                         type={passShownSecond ? "text" : "password"}
                         id="passwordConfirmation"
                         value={form.passwordConfirmation}
                         onChange={(e) =>
@@ -115,6 +129,7 @@ export default function Register({ currentUser, setCurrentUser }) {
                         }
                         placeholder="enter your confirmation..."
                     />
+                    <div className="eye-wrapper" onClick={togglePasswordSecond}><img className="eye-password-icon" src="eye.png" alt="" /></div>
                 </div>
 
                 <input className="register-btn" type="submit" />

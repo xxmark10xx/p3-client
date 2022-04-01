@@ -59,18 +59,27 @@ export default function Login({ currentUser, setCurrentUser }) {
                 </div>
 
                 <div className="login-form-password">
+
+                    
                     <label className="label" htmlFor="password">
                         Password:
                     </label>
-                    <input
+
+                    
+                        <input
+                            className="make-longer"
                         id="password"
-                        type={passShown ? "text" : "password"}
-                        onChange={(e) =>
-                            setForm({ ...form, password: e.target.value })
-                        }
-                        value={form.password}
-                    />
-                    <div onClick={togglePassword}><img className="eye-password-icon" src="eye.png" alt="" /></div>
+                        placeholder="Password"
+                            type={passShown ? "text" : "password"}
+                            onChange={(e) =>
+                                setForm({ ...form, password: e.target.value })
+                            }
+                            value={form.password}
+                    >
+                    
+                    </input>
+                        <div className="eye-wrapper" onClick={togglePassword}><img className="eye-password-icon" src="eye.png" alt="" /></div>
+                        
                 </div>
 
                 <input className="submit-btn" type="submit" />

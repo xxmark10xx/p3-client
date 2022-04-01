@@ -139,6 +139,10 @@ nav {
   align-items: center;
 }
 
+.mainchat-time-small {
+  font-size: 10px;
+}
+
 .people-online-wrapper-details {
   display: flex;
   justify-content: center;
@@ -315,8 +319,29 @@ nav {
 }
 
 .login-form-password {
+  position: relative;
   display: flex;
   flex-direction: column;
+}
+
+.login-form-password-second {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.user-name-pointer {
+  cursor: pointer;
+  display: inline;
+}
+
+.name-text-input {
+  width: 74%;
+}
+
+.bio-text-input {
+  width: 74%;
 }
 
 input[type="email"] {
@@ -327,10 +352,40 @@ input[type="email"] {
 }
 
 input[type="password"] {
-  padding: 15px;
+  padding: 15px 50px 15px 15px;
   border: none;
   border-radius: 10px;
   box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.15);
+}
+
+input[type="text"] {
+  padding: 15px 50px 15px 15px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.15);
+}
+
+.eye-wrapper {
+  position: absolute;
+  right: 5%;
+  top: 45%;
+  background-color: #282c3400;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.eye-wrapper:hover {
+  background-color: #282c341a;
+}
+
+.make-longer {
+  width: auto;
+  padding-right: 10px;
 }
 
 .enter-your-name {
@@ -461,10 +516,16 @@ input[type="password"] {
 }
 
 .profile-img {
+  position: relative;
+  top: 10%;
   width: 125px;
   border-radius: 15px;
   object-fit: cover;
   box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.15);
+}
+
+.spacer {
+  padding-bottom: 10px;
 }
 
 .user-details-wrapper-profile {
@@ -508,6 +569,46 @@ input[type="password"] {
   box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.15);
   color: black;
   cursor: pointer;
+}
+
+.save-profile-btn {
+  margin-top: 30px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: black;
+
+  box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.15);
+  color: white;
+  cursor: pointer;
+}
+
+input[type=file]::file-selector-button {
+  border: none;
+  padding: 20px;
+  border-radius: .2em;
+  background-color: black;
+  color: white;
+  /* box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.15); */
+  transition: 1s;
+  border-radius: 10px;
+}
+
+.file-upload-btn-x {
+  border: 1px solid black  ;
+  /* background-color: rgba(0, 0, 0, 0.10); */
+  width: 86%;
+  padding: 20px;
+  /* border: none; */
+  color: black;
+  border-radius: 7px;
+}
+
+.edit-profile-btn-wrapper {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
 }
 
 .go-back-btn {

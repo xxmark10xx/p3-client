@@ -35,12 +35,16 @@ export default function Message({
                 <div>
                     <img className="message-img" src={avatar} alt="" />
                 </div>
-                <p className="message-text">{content}</p>
+                <div className="message-text">
+                
+                <p>{content}</p>
+                <div className="message-bottom"><p className="mainchat-time-small">{format(createdAt)}</p></div>
+                </div>
+            
             </div>
             <div className="message-bottom" onClick={handleNameClick}>
-                @{name}
+                <h4 className="user-name-pointer">{name}</h4>
             </div>
-            <div className="message-bottom">{format(createdAt)}</div>
         </div>
     )
 }
