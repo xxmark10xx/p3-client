@@ -140,7 +140,9 @@ nav {
 }
 
 .mainchat-time-small {
+  padding-top: 10px;
   font-size: 10px;
+  color: rgba(0, 0, 0, 0.336);
 }
 
 .people-online-wrapper-details {
