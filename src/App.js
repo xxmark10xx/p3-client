@@ -18,7 +18,7 @@ function App() {
 		const token = localStorage.getItem('jwt');
 		// if a toekn is found, log the user in, otherwise make sure they are logged out
 		if (token) {
-			setCurrentUser(jwt_decode(token));
+			setCurrentUser(jwt_decode (token));
 		} else {
 			setCurrentUser(null);
 		}
