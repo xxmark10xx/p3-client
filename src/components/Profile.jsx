@@ -34,7 +34,8 @@ export default function Profile({ setCurrentUser, currentUser }) {
     const normalProfile = (
         <div className="aside-profile-wrapper">
             <div>
-                <img className="profile-img" src={currentUser.avatar} alt="" />
+                {/* <img className="profile-img" src={currentUser.avatar} alt="" /> */}
+                {currentUser.avatar ? <img className="profile-img" src={currentUser.avatar}/> : <img className="profile-img" src="img-user.png" />}
             </div>
 
             <div className="user-details-wrapper-profile">

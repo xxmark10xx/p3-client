@@ -461,9 +461,10 @@ input[type="password"] {
 }
 
 .profile-img {
-  width: 150px;
-  border-radius: 10px;
+  width: 125px;
+  border-radius: 15px;
   object-fit: cover;
+  box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.15);
 }
 
 .user-details-wrapper-profile {
