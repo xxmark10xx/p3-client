@@ -70,7 +70,7 @@ export default function Login({ currentUser, setCurrentUser }) {
                         }
                         value={form.password}
                     />
-                    <button onClick={togglePassword}>show password</button>
+                    <div onClick={togglePassword}><img className="eye-password-icon" src="eye.png" alt="" /></div>
                 </div>
 
                 <input className="submit-btn" type="submit" />

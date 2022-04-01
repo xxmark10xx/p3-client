@@ -10,11 +10,11 @@ export default function UserData({
     clickedUserData,
     setClickedUserProfile,
 }) {
-    const [formState, setFormState] = useState(true)
+    // const [formState, setFormState] = useState(true)
 
-    const handleState = () => {
-        setFormState(!formState)
-    }
+    // const handleState = () => {
+    //     setFormState(!formState)
+    // }
 
     return (
         <div className="aside-component">

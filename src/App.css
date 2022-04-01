@@ -72,6 +72,10 @@ nav {
   /* background-color: cadetblue; */
 }
 
+.eye-password-icon {
+  width: 27px;
+}
+
 /* Main chat Component */
 .main-chat-wrapper {
   height: 100%;
