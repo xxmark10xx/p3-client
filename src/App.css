@@ -139,6 +139,10 @@ nav {
   align-items: center;
 }
 
+.john {
+  margin-right: 20px;
+}
+
 .mainchat-time-small {
   padding-top: 10px;
   font-size: 10px;
@@ -201,7 +205,7 @@ nav {
 }
 
 .message-bottom {
-  position: re;
+  /* position: re; */
   font-size: 12px;
   margin-top: -3px;
 }
@@ -212,6 +216,8 @@ nav {
   border-radius: 10%;
   object-fit: cover;
   margin-right: 10px;
+  padding-bottom: 2px;
+  
 }
 
 .message-text {
@@ -219,6 +225,7 @@ nav {
   border-radius: 20px;
   background-color: white;
   max-width: 400px;
+  
 }
 
 .message.own {
@@ -335,8 +342,22 @@ nav {
 }
 
 .user-name-pointer {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: 800;
   cursor: pointer;
   display: inline;
+  background: -webkit-linear-gradient(190.78deg, rgb(118, 230, 80) -1.13%, rgb(249, 214, 73) 15.22%, rgb(240, 142, 53) 32.09%, rgb(236, 81, 87) 48.96%, rgb(255, 24, 189) 67.94%, rgb(26, 75, 255) 85.34%, rgb(98, 216, 249) 99.57%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+   ;
+}
+
+#more-specific {
+  font-size: 50px;
+  background: -webkit-linear-gradient(29.78deg, rgb(118, 230, 80) -1.13%, rgb(249, 214, 73) 15.22%, rgb(240, 142, 53) 32.09%, rgb(236, 81, 87) 48.96%, rgb(255, 24, 189) 67.94%, rgb(26, 75, 255) 85.34%, rgb(98, 216, 249) 99.57%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .name-text-input {

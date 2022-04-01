@@ -33,7 +33,7 @@ export default function Message({
         <div className={own ? "message own" : "message"}>
             <div className="message-top">
                 
-                <div>
+                <div className="john">
                 <div>
                     <img className="message-img" src={avatar} alt="" />
                     </div>
