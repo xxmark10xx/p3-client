@@ -32,8 +32,15 @@ export default function Message({
     return (
         <div className={own ? "message own" : "message"}>
             <div className="message-top">
+                
+                <div>
                 <div>
                     <img className="message-img" src={avatar} alt="" />
+                    </div>
+                    
+                    <div className="message-bottom" onClick={handleNameClick}>
+                        <h4 className="user-name-pointer">{name}</h4>
+                    </div>
                 </div>
                 <div className="message-text">
                 
@@ -41,9 +48,6 @@ export default function Message({
                 <div className="message-bottom"><p className="mainchat-time-small">{format(createdAt)}</p></div>
                 </div>
             
-            </div>
-            <div className="message-bottom" onClick={handleNameClick}>
-                <h4 className="user-name-pointer">{name}</h4>
             </div>
         </div>
     )
