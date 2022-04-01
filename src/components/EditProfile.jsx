@@ -3,13 +3,14 @@ import axios from "axios"
 
 export default function EditProfile({ setCurrentUser, currentUser, handleEditPage }) {
     const [ editProfile, setEditProfile ] = useState({
-      name: currentUser.name,
-      bio: currentUser.bio
+        name: currentUser.name,
+        bio: currentUser.bio
     })
     const [formImg, setFormImg] = useState("")
 
     const handleSaveImg = async (e) => {
         e.preventDefault() 
+        console.log(editProfile)
         const token = localStorage.getItem('jwt')
         const options = {
             headers: {
@@ -31,7 +32,6 @@ export default function EditProfile({ setCurrentUser, currentUser, handleEditPag
                 email: currentUser.email,
                 iat: currentUser.iat,
                 exp: currentUser.exp,
-                // bio: editForm.bio,
                 avatar: uploadedImage.data.cloudImage
             })
         } catch (err) {
@@ -39,6 +39,39 @@ export default function EditProfile({ setCurrentUser, currentUser, handleEditPag
         }
     }
 
+
+
+
+
+    const handleSaveText = async (e) => {
+        e.preventDefault() 
+        const token = localStorage.getItem('jwt')
+        const options = {
+            headers: {
+              'Authorization': token
+            },
+            new : true
+        }
+        try {
+            // axios call to get and update the current users profile-img
+            const uploadedImage = await axios.put(
+                `${process.env.REACT_APP_SERVER_URL}/api-v1/profile/${currentUser.id}`,
+                editProfile, options
+            )
+            setCurrentUser({
+                id: currentUser.id,
+                name: editProfile.name,
+                email: currentUser.email,
+                iat: currentUser.iat,
+                exp: currentUser.exp,
+                bio: editProfile.bio,
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    
     return (
         <>
             <div className="aside-profile-wrapper">
@@ -47,19 +80,18 @@ export default function EditProfile({ setCurrentUser, currentUser, handleEditPag
                         className="go-back-img"
                         src="arrow-left.svg"
                         alt="arrow left"
-                    />
+                        />
                 </div>
                 <div>
                     <img
                         className="profile-img"
                         src={currentUser.avatar}
                         alt=""
-                    />
+                        />
                 </div>
                 <div className="user-details-wrapper-profile">
                     <div className="login-form-email">
                         <form>
-                            <div className="login-form-email">
                                 <label className="label" htmlFor="image-upload">
                                     Change Avatar
                                 </label>
@@ -72,22 +104,46 @@ export default function EditProfile({ setCurrentUser, currentUser, handleEditPag
                                     onChange={(e) =>
                                         setFormImg(e.target.files[0])
                                     }
-                                />
+                                    />
 
+                                <div className="edit-profile-btn-wrapper">
+                                    <button
+                                        onClick={handleSaveImg}
+                                        className="edit-profile-btn"
+                                        >
+                                            Save
+                                    </button>
+                                </div>
+                        </form>
+                        <form>
                                 <label
                                     className="label"
                                     htmlFor="username"
-                                ></label>
-                                <input />
-                            </div>
+                                    ></label>
+                                <input 
+                                    className="name-text-input"
+                                    type="text"
+                                    value={editProfile.name} 
+                                    onChange={e => setEditProfile({...editProfile, name: e.target.value})}
+                                />
+                           
+
                             <div className="user-bio-wrapper">
-                                <label className="label" htmlFor="bio"></label>
-                                <input className="bio-text-input" type="text" />
+                                <label 
+                                    className="label"  
+                                    htmlFor="bio"
+                                    ></label>
+                                <input 
+                                    className="bio-text-input" 
+                                    type="text" 
+                                    value={editProfile.bio} 
+                                    onChange={e => setEditProfile({...editProfile, bio: e.target.value})}
+                                />
                             </div>
 
                             <div className="edit-profile-btn-wrapper">
                                 <button
-                                    onClick={handleSaveImg}
+                                    onClick={handleSaveText}
                                     className="edit-profile-btn"
                                 >
                                     Save

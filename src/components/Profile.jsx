@@ -41,11 +41,7 @@ export default function Profile({ setCurrentUser, currentUser }) {
                 <h3>@{currentUser.name}</h3>
                 <div className="user-bio-wrapper">
                     <p className="user-bio">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Dolorem dolorum iste tenetur tempore suscipit
-                        excepturi consectetur a cupiditate odio aliquam sunt
-                        deleniti, possimus corporis molestias hic tempora
-                        maiores perspiciatis consequatur.
+                       {currentUser.bio}
                     </p>
                 </div>
                 <div className="followers-wrapper">
