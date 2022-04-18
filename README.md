@@ -48,3 +48,6 @@ Andy
 | GET    | /           | renders landing page - shows login / welcome / chat |
 | GET    | /timeline   | after logged in - view profile and chat             |
 |        |             |                                                     |
+
+# link to sevrer
+[chat app sever repo](https://github.com/xxmark10xx/p3server)
